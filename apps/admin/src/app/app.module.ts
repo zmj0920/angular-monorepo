@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { CommonModule } from '@angular/common';
 import { appRoutes } from './app.routes';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -15,9 +16,10 @@ import { appRoutes } from './app.routes';
     CommonModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    SharedModule,
     RouterModule.forRoot(appRoutes, {
-        useHash: true,
-        scrollPositionRestoration: 'top',
+        // useHash: true,
+        // scrollPositionRestoration: 'top',
         // preloadingStrategy: PreloadOptionalModules
       })
   ],

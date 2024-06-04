@@ -1,0 +1,51 @@
+<ng-container [ngSwitch]="type">
+  <ng-container *ngSwitchCase="'question'">
+    <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
+      <path d="M6 0a6 6 0 1 1 0 12A6 6 0 0 1 6 0zm.782 8.6H4.74v1.92h2.04V8.6zm-.71-6.711c-1.169 0-2.072.345-2.661 1.015-.386.426-.549.822-.65 1.554l2.092.192c.04-.314.08-.456.182-.619.193-.315.528-.477.985-.477.61 0 .965.284.965.761 0 .335-.163.549-.66.843-.721.437-.802.498-1.046.782-.325.396-.447.802-.447 1.503 0 .294 0 .304-.02.467h1.889a3.053 3.053 0 0 1-.03-.396c0-.467.151-.731.578-1.005.883-.549.985-.62 1.229-.843.426-.396.63-.873.63-1.493 0-1.401-1.169-2.284-3.037-2.284z" fill="#BEC3CE" fill-rule="evenodd" />
+    </svg>
+  </ng-container>
+  <ng-container *ngSwitchCase="'physical-on'">
+    <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
+      <path d="M9 3a3 3 0 0 1 0 6H3a3 3 0 1 1 0-6h6zm0 1a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" fill="#5F6167" fill-rule="evenodd" />
+    </svg>
+  </ng-container>
+  <ng-container *ngSwitchCase="'physical-off'">
+    <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
+      <path d="M9 3a3 3 0 0 1 0 6H3a3 3 0 1 1 0-6h6zm0 5a2 2 0 1 0 0-4H3l.15.005A2 2 0 0 1 3 8h6z" fill="#5F6167" fill-rule="nonzero" />
+    </svg>
+  </ng-container>
+  <ng-container *ngSwitchCase="'copy'">
+    <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
+      <path d="M3 3.429V8a1 1 0 0 0 1 1h4.571v2a1 1 0 0 1-.883.993L7.571 12H1a1 1 0 0 1-1-1V4.429a1 1 0 0 1 1-1h2zM11 0a1 1 0 0 1 1 1v5.714a1 1 0 0 1-1 1H5.286a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1H11z" fill="#8D9199" fill-rule="evenodd" />
+    </svg>
+  </ng-container>
+  <ng-container *ngSwitchCase="'console-log'">
+    <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em">
+      <g fill="none" fill-rule="evenodd">
+        <path d="M3 1v1H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-1V1h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1zm6 8v1H3V9h6zm2-2v1H3V7h8zm0-2v1H3V5h8zM4.5 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5zM8 1v1H6V1h2z" fill="#FFF" fill-rule="nonzero" mask="url(#b)" />
+      </g>
+    </svg>
+  </ng-container>
+  <ng-container *ngSwitchCase="'new-window'">
+    <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em">
+      <g fill="none" fill-rule="evenodd">
+        <path d="M7.024 0v1.273h-5.75v11.454h11.453V6.998H14V14H0V0h7.024zM14 0v5.21h-1.273V2.172L6.6 8.298l-.9-.9 6.126-6.126h-3.04V0H14z" fill="#FFF" fill-rule="nonzero" mask="url(#b)" />
+      </g>
+    </svg>
+  </ng-container>
+  <ng-container *ngSwitchCase="'physical-split'">
+    <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
+      <path d="M6.8 10.2v1.7H5.1v-1.7h1.7zM4.25 3.4v5.1H0V3.4h4.25zm7.65 0v5.1H7.65V3.4h4.25zM6.8 6.8v1.7H5.1V6.8h1.7zM3.4 4.25H.85v3.4H3.4v-3.4zm7.65 0H8.5v3.4h2.55v-3.4zM6.8 3.4v1.7H5.1V3.4h1.7zm0-3.4v1.7H5.1V0h1.7z" fill="currentColor" fill-rule="nonzero"/>
+    </svg>
+  </ng-container>
+  <ng-container *ngSwitchCase="'node-jump-ecms'">
+    <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
+      <path d="M5.392.7a.481.481 0 0 1 .023.961h-4.02a.371.371 0 0 0-.374.368v8.539c0 .203.168.368.374.368H9.93a.371.371 0 0 0 .374-.368V7.505a.48.48 0 1 1 .96 0v4.043c0 .25-.205.452-.459.452H.46A.455.455 0 0 1 0 11.548V1.152C0 .902.205.7.366.7h5.026zm6.15-.7A.46.46 0 0 1 12 .46v2.807a.46.46 0 1 1-.917 0V1.58L5.928 6.747a.442.442 0 0 1-.626 0l-.053-.053a.445.445 0 0 1 0-.628L10.384.919H8.74a.46.46 0 0 1 0-.919z" fill="#5F6167" fill-rule="nonzero" />
+    </svg>
+  </ng-container>
+  <ng-container *ngSwitchCase="'warning'">
+    <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
+      <path d="M6 0a6 6 0 1 1 0 12A6 6 0 0 1 6 0zm0 1.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6zm-.5 6.534a1 1 0 1 1 1 1.732 1 1 0 0 1-1-1.732zM6 3c.279 0 .544.066.734.182.189.116.284.272.263.43l-.416 3.08C6.56 6.867 6.306 7 6 7c-.306 0-.56-.134-.581-.307l-.416-3.081c-.021-.158.074-.314.263-.43C5.456 3.066 5.721 3 6 3z" fill="#FFBF57" fill-rule="nonzero" />
+    </svg>
+  </ng-container>
+</ng-container>

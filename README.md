@@ -77,6 +77,6 @@ nx g @nx/angular:app appName
 
 nx g @nx/angular:lib libName
 
-nx serve myngapp
+nx serve admin
 
 nx build appName

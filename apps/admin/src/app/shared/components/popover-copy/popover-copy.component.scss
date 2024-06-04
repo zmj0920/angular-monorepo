@@ -1,0 +1,12 @@
+.copy-text {
+  margin-right: 5px;
+}
+
+::ng-deep {
+  .ant-popover
+  .ant-popover-content
+  .ant-popover-inner
+  .ant-popover-inner-content {
+    display: block;
+  }
+}

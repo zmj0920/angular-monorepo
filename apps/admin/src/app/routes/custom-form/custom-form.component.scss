@@ -1,0 +1,27 @@
+[nz-menu] {
+    line-height: 64px;
+  }
+  
+  nz-header.ant-layout-header {
+    color: white;
+    text-align: center;
+  }
+  
+  nz-content {
+    padding: 0 10px 50px;
+  
+    nz-breadcrumb {
+      margin: 16px 0 !important;
+    }
+  }
+  
+  form [nz-button] {
+    margin-right: 8px;
+  }
+  
+  .inner-content {
+    background: #fff;
+    padding: 24px;
+    min-height: 280px;
+  }
+  

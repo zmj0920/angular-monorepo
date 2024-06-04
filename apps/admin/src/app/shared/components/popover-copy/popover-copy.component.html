@@ -1,0 +1,14 @@
+<span class="more-icon"
+  nz-popover
+  [nzPopoverOverlayStyle]="isHide ? {} : { display: 'none' }"
+  nzPopoverTrigger="hover"
+  (nzPopoverVisibleChange)="change()"
+  [nzPopoverContent]="contentTemplate">
+  <i nz-icon nzType="ellipsis" nzTheme="outline"></i>
+</span>
+<ng-template #contentTemplate>
+  <div *ngFor="let item of data">
+    <span class="copy-text">{{ text }} {{ item }}</span>
+    <app-copy-text [val]="item"></app-copy-text>
+  </div>
+</ng-template>
