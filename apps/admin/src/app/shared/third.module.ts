@@ -1,7 +1,13 @@
-import { Type } from '@angular/core';
-import { FormlyModule } from '@ngx-formly/core';
 import { FormlyNgZorroAntdModule } from '@ngx-formly/ng-zorro-antd';
-export const THIRDMODULES: Array<Type<any>> = [
+export const THIRDMODULES = [
   FormlyNgZorroAntdModule,
-  FormlyModule,
+  // FormlyModule
+  // FormlyModule.forChild({
+  //   types: [
+  //     {
+  //       name: 'custom',
+  //       component: CustomFormTemplateComponent,
+  //     },
+  //   ],
+  // }),
 ];

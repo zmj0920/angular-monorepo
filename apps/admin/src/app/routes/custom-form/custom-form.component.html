@@ -22,3 +22,8 @@
     </div>
   </nz-content>
 </nz-layout>
+
+<ng-template #customTemplate let-model="model" let-field="field">
+  <label>{{ field.templateOptions.label }}</label>
+  <input type="text" [formControl]="field.formControl" [(ngModel)]="model[field.key]">
+</ng-template>

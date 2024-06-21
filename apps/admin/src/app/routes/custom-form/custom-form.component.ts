@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyWrapperFormFieldComponent } from '../../shared/components';
 
 @Component({
   selector: 'app-custom-form',
@@ -18,7 +19,12 @@ export class CustomFormComponent {
         label: 'Input',
         placeholder: 'Input placeholder',
         required: true,
-      }
+      },
+      validation: {
+        messages: {
+          required: '请输入姓名',
+        },
+      },
     },
     {
       key: 'textarea',
@@ -27,14 +33,19 @@ export class CustomFormComponent {
         label: 'Textarea',
         placeholder: 'Textarea placeholder',
         required: true,
-      }
+      },
+      validation: {
+        messages: {
+          required: '请输入',
+        },
+      },
     },
     {
       key: 'checkbox',
       type: 'checkbox',
       templateOptions: {
         label: 'Checkbox',
-      }
+      },
     },
     {
       key: 'select',
@@ -47,8 +58,17 @@ export class CustomFormComponent {
           { label: 'Option 1', value: '1' },
           { label: 'Option 2', value: '2' },
           { label: 'Option 3', value: '3' },
-        ]
-      }
+        ],
+        change: (field, e) => {
+         console.log(field)
+         console.log(e)
+        },
+      },
+      validation: {
+        messages: {
+          required: '请输入选择',
+        },
+      },
     },
     {
       key: 'radio',
@@ -59,9 +79,30 @@ export class CustomFormComponent {
         options: [
           { label: 'Option 1', value: '1' },
           { label: 'Option 2', value: '2' },
-        ]
-      }
-    }
+        ],
+      },
+      validation: {
+        messages: {
+          required: '请输入选择',
+        },
+      },
+    },
+    {
+      key: 'custom',
+      type: 'input',
+      templateOptions: {
+        label: 'custom',
+        placeholder: 'Input placeholder',
+        required: true,
+      },
+      validation: {
+        messages: {
+          required: '请输入姓名',
+        },
+      },
+      wrappers:['custom']
+    },
+    
   ];
 
   onSubmit() {

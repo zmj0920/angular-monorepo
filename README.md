@@ -77,6 +77,9 @@ nx g @nx/angular:app appName
 
 nx g @nx/angular:lib libName
 
-nx serve admin
+nx serve admin --port 4201
 
 nx build appName
+
+
+https://github.com/hmilin/hmilin.github.io/blob/cd55bae342131340d45dcdcea1ccafa19c001f1c/posts/formly.mdx#L41

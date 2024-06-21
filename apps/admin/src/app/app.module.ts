@@ -18,12 +18,12 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     SharedModule,
     RouterModule.forRoot(appRoutes, {
-        // useHash: true,
-        // scrollPositionRestoration: 'top',
-        // preloadingStrategy: PreloadOptionalModules
-      })
+      // useHash: true,
+      // scrollPositionRestoration: 'top',
+      // preloadingStrategy: PreloadOptionalModules
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

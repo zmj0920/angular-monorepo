@@ -2,9 +2,9 @@
   "name": "ng-table",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/ng-table/src",
-  "prefix": "lib",
+  "prefix": "angular-monorepo",
+  "tags": ["type:feature", "scope:ng-table"],
   "projectType": "library",
-  "tags": [],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

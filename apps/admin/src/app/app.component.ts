@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 import {
   lastValueFrom,
@@ -20,8 +21,10 @@ export class AppComponent implements OnInit {
   // 选项卡切换
   private tabChange$ = new Subject<number>();
   private subscription!: Subscription;
+  constructor(private msg: NzMessageService) {}
   ngOnInit(): void {
     console.log(111);
+    this.msg.success('123');
   }
   title = 'admin';
 
@@ -92,7 +95,7 @@ export class AppComponent implements OnInit {
     // ).subscribe(query => {
     //   // 发起搜索请求或执行验证逻辑
     // });
-   
+
     this.subscription = this.tabChange$
       .pipe(
         debounceTime(300), // 等待300毫秒后再执行
