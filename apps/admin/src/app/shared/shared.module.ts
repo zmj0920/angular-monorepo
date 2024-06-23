@@ -10,22 +10,30 @@ import { SHARED_CDK_MODULES } from './shared-cdk.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 import { THIRDMODULES } from './third.module';
 import { FormlyModule } from '@ngx-formly/core';
-import { FormlyWrapperFormFieldComponent } from './components';
+import {
+  FormlyFieldCustomComponent,
+  FormlyWrapperFormFieldComponent,
+} from './components';
+import { FormRefSourceService } from './directives';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     // FormlyModule,
     FormlyModule.forChild({
-      // types: [
-      //   {
-      //     name: 'custom',
-      //     component: FormlyWrapperFormFieldComponent,
-      //   },
-      // ],
+      types: [
+        {
+          name: 'custom',
+          component: FormlyFieldCustomComponent,
+        },
+      ],
       wrappers: [
         {
           name: 'custom',
@@ -44,6 +52,8 @@ import { FormlyWrapperFormFieldComponent } from './components';
   ],
   exports: [
     CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     // RouterModule,
@@ -61,5 +71,6 @@ import { FormlyWrapperFormFieldComponent } from './components';
     // your cdk
     ...SHARED_CDK_MODULES,
   ],
+  providers: [FormRefSourceService],
 })
 export class SharedModule {}

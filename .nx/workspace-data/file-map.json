@@ -1,0 +1,1040 @@
+{
+  "version": "6.0",
+  "nxVersion": "19.3.1",
+  "deps": {
+    "@angular/animations": "~18.0.0",
+    "@angular/common": "~18.0.0",
+    "@angular/compiler": "~18.0.0",
+    "@angular/core": "~18.0.0",
+    "@angular/forms": "~18.0.0",
+    "@angular/platform-browser": "~18.0.0",
+    "@angular/platform-browser-dynamic": "~18.0.0",
+    "@angular/router": "~18.0.0",
+    "@ngx-formly/core": "^6.3.4",
+    "@ngx-formly/ng-zorro-antd": "^6.3.4",
+    "@nx/angular": "19.3.1",
+    "ng-zorro-antd": "^18.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3",
+    "@angular-devkit/build-angular": "~18.0.0",
+    "@angular-devkit/core": "~18.0.0",
+    "@angular-devkit/schematics": "~18.0.0",
+    "@angular-eslint/eslint-plugin": "^18.0.1",
+    "@angular-eslint/eslint-plugin-template": "^18.0.1",
+    "@angular-eslint/template-parser": "^18.0.1",
+    "@angular/cli": "~18.0.0",
+    "@angular/compiler-cli": "~18.0.0",
+    "@angular/language-service": "~18.0.0",
+    "@nx/cypress": "19.3.1",
+    "@nx/eslint": "19.3.1",
+    "@nx/eslint-plugin": "19.3.1",
+    "@nx/jest": "19.3.1",
+    "@nx/js": "19.3.1",
+    "@nx/web": "19.3.1",
+    "@nx/workspace": "19.3.1",
+    "@schematics/angular": "~18.0.0",
+    "@swc-node/register": "~1.9.1",
+    "@swc/core": "~1.5.7",
+    "@swc/helpers": "~0.5.11",
+    "@types/jest": "^29.4.0",
+    "@types/node": "18.16.9",
+    "@typescript-eslint/eslint-plugin": "^7.3.0",
+    "@typescript-eslint/parser": "^7.3.0",
+    "@typescript-eslint/utils": "^8.0.0-alpha.28",
+    "cypress": "^13.8.0",
+    "eslint": "~8.57.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-cypress": "^2.13.4",
+    "jest": "^29.4.1",
+    "jest-environment-jsdom": "^29.4.1",
+    "jest-preset-angular": "~14.1.0",
+    "nx": "19.3.1",
+    "prettier": "^2.6.2",
+    "ts-jest": "^29.1.0",
+    "ts-node": "10.9.1",
+    "typescript": "~5.4.2"
+  },
+  "pathMappings": {
+    "@angular-monorepo/form": [
+      "libs/form/src/index.ts"
+    ],
+    "@angular-monorepo/libs": [
+      "libs/src/index.ts"
+    ],
+    "@libs/ng-table": [
+      "libs/ng-table/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/cypress/plugin",
+      "options": {
+        "targetName": "e2e",
+        "openTargetName": "open-cypress",
+        "componentTestingTargetName": "component-test",
+        "ciTargetName": "e2e-ci"
+      }
+    },
+    {
+      "name": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "package-lock.json",
+        "hash": "13266548719845910807"
+      },
+      {
+        "file": "package.json",
+        "hash": "16833083729700981341"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "13404745306227114823"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "135344717789917661"
+      },
+      {
+        "file": "proxy.config.js",
+        "hash": "14206969247151426892"
+      },
+      {
+        "file": "nx.json",
+        "hash": "2054051179695694581"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "4934098906304722861"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "11532813898455409296"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "7544409015863045561"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "9076283775746850955"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "7473220183190921152"
+      },
+      {
+        "file": ".github/workflows/ci.yml",
+        "hash": "6811265094404644295"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "11966908335120871298"
+      },
+      {
+        "file": "README.md",
+        "hash": "3781212628527313419"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "8293861672114013313"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "6820402234827505055"
+      }
+    ],
+    "projectFileMap": {
+      "ng-table": [
+        {
+          "file": "libs/ng-table/.eslintrc.json",
+          "hash": "18314034261363792657"
+        },
+        {
+          "file": "libs/ng-table/README.md",
+          "hash": "6086579112435858566"
+        },
+        {
+          "file": "libs/ng-table/jest.config.ts",
+          "hash": "4990328049311245807"
+        },
+        {
+          "file": "libs/ng-table/project.json",
+          "hash": "8039556609501525208"
+        },
+        {
+          "file": "libs/ng-table/src/index.ts",
+          "hash": "7817475861461725226"
+        },
+        {
+          "file": "libs/ng-table/src/lib/ng-table/ng-table.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "libs/ng-table/src/lib/ng-table/ng-table.component.html",
+          "hash": "8167173514344733958"
+        },
+        {
+          "file": "libs/ng-table/src/lib/ng-table/ng-table.component.spec.ts",
+          "hash": "9757354439367252418",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/ng-table/src/lib/ng-table/ng-table.component.ts",
+          "hash": "11855640887498651991",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/ng-table/src/test-setup.ts",
+          "hash": "10765977267162271731",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/ng-table/tsconfig.json",
+          "hash": "7184861466157324158"
+        },
+        {
+          "file": "libs/ng-table/tsconfig.lib.json",
+          "hash": "15304444604046903881"
+        },
+        {
+          "file": "libs/ng-table/tsconfig.spec.json",
+          "hash": "1930986853382524452"
+        }
+      ],
+      "admin-e2e": [
+        {
+          "file": "apps/admin-e2e/.eslintrc.json",
+          "hash": "10799368048025705622"
+        },
+        {
+          "file": "apps/admin-e2e/cypress.config.ts",
+          "hash": "2528649072147995884",
+          "deps": [
+            "npm:@nx/cypress",
+            "npm:cypress"
+          ]
+        },
+        {
+          "file": "apps/admin-e2e/project.json",
+          "hash": "9187203563266811857"
+        },
+        {
+          "file": "apps/admin-e2e/src/e2e/app.cy.ts",
+          "hash": "14271670090400935709"
+        },
+        {
+          "file": "apps/admin-e2e/src/fixtures/example.json",
+          "hash": "13882982864087580737"
+        },
+        {
+          "file": "apps/admin-e2e/src/support/app.po.ts",
+          "hash": "5364106453863571025"
+        },
+        {
+          "file": "apps/admin-e2e/src/support/commands.ts",
+          "hash": "7570864621153670540"
+        },
+        {
+          "file": "apps/admin-e2e/src/support/e2e.ts",
+          "hash": "14369563060992369541"
+        },
+        {
+          "file": "apps/admin-e2e/tsconfig.json",
+          "hash": "8511929940695645841"
+        }
+      ],
+      "form": [
+        {
+          "file": "libs/form/.eslintrc.json",
+          "hash": "5884027406591090395"
+        },
+        {
+          "file": "libs/form/README.md",
+          "hash": "17652982050518034020"
+        },
+        {
+          "file": "libs/form/jest.config.ts",
+          "hash": "11153188369758442289"
+        },
+        {
+          "file": "libs/form/project.json",
+          "hash": "16516086458265121437"
+        },
+        {
+          "file": "libs/form/src/index.ts",
+          "hash": "4356940264880860519"
+        },
+        {
+          "file": "libs/form/src/lib/form/components/text-input-autocomplete/text-input-autocomplete-container.component.ts",
+          "hash": "3298207357225777154",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/components/text-input-autocomplete/text-input-autocomplete-menu.component.ts",
+          "hash": "14045483162112432865",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/components/text-input-autocomplete/text-input-autocomplete.directive.ts",
+          "hash": "5272476573126343220",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/demo/alert.md",
+          "hash": "12277462240179439457"
+        },
+        {
+          "file": "libs/form/src/lib/form/demo/all.md",
+          "hash": "18030223287447025533"
+        },
+        {
+          "file": "libs/form/src/lib/form/demo/basic.md",
+          "hash": "2691329379059084154"
+        },
+        {
+          "file": "libs/form/src/lib/form/demo/change.md",
+          "hash": "13357426100892840274"
+        },
+        {
+          "file": "libs/form/src/lib/form/demo/expression.md",
+          "hash": "1275521623605807154"
+        },
+        {
+          "file": "libs/form/src/lib/form/demo/hidden.md",
+          "hash": "3332371897889460955"
+        },
+        {
+          "file": "libs/form/src/lib/form/demo/validators.md",
+          "hash": "6398762288227911903"
+        },
+        {
+          "file": "libs/form/src/lib/form/directive/ng-form-ref.directive.spec.ts",
+          "hash": "11910021923865239409"
+        },
+        {
+          "file": "libs/form/src/lib/form/directive/ng-form-ref.directive.ts",
+          "hash": "9399128814997980499",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/formly-validation-message/formly-validation-message.component.spec.ts",
+          "hash": "6653424070822939524",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/formly-validation-message/formly-validation-message.component.ts",
+          "hash": "6355179008672167417",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/index.ts",
+          "hash": "7610083632601419206"
+        },
+        {
+          "file": "libs/form/src/lib/form/index.zh-CN.md",
+          "hash": "18135879891148538722"
+        },
+        {
+          "file": "libs/form/src/lib/form/modal-form/iform-modal-config.ts",
+          "hash": "9228669634376549554",
+          "deps": [
+            "npm:@ngx-formly/core",
+            "npm:@angular/forms",
+            "npm:@angular/core",
+            "npm:ng-zorro-antd",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/modal-form/nz-modal-custom.component.html",
+          "hash": "6371638446715255478"
+        },
+        {
+          "file": "libs/form/src/lib/form/modal-form/nz-modal-custom.component.ts",
+          "hash": "7648787154470930613",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/ng-field.type.ts",
+          "hash": "8195332641060330432",
+          "deps": [
+            "npm:@ngx-formly/core",
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/ng-form.module.ts",
+          "hash": "3006491819241525361",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/forms",
+            "npm:ng-zorro-antd",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/ng-modal-form.service.spec.ts",
+          "hash": "11862753645595481825",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/ng-modal-form.service.ts",
+          "hash": "9064914797559279010",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser",
+            "npm:@angular/forms",
+            "npm:ng-zorro-antd",
+            "npm:@ngx-formly/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/pipe/select-options.pipe.ts",
+          "hash": "4472818893114015802",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/public-api.ts",
+          "hash": "11799595005786197207"
+        },
+        {
+          "file": "libs/form/src/lib/form/style/_form-upload-file.less",
+          "hash": "7351788505346091498"
+        },
+        {
+          "file": "libs/form/src/lib/form/style/_modal-custom.less",
+          "hash": "7985629870489749926"
+        },
+        {
+          "file": "libs/form/src/lib/form/style/_panel-wrapper.less",
+          "hash": "11527854474579473665"
+        },
+        {
+          "file": "libs/form/src/lib/form/style/index.less",
+          "hash": "12858377094758858016"
+        },
+        {
+          "file": "libs/form/src/lib/form/types/alert.component.ts",
+          "hash": "5290608177884584179",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core",
+            "npm:ng-zorro-antd"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/checkbox.component.ts",
+          "hash": "11054733065049081756",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/cidr.component.ts",
+          "hash": "10044089114447264872",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/custom-auto-complete.component.ts",
+          "hash": "13741062352536935852",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/custom.component.ts",
+          "hash": "16503779730645899903",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/date.component.ts",
+          "hash": "13925621374740387471",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/image.component.ts",
+          "hash": "11019043141517477926",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/input.component.ts",
+          "hash": "16560159084177324879",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/ip.component.ts",
+          "hash": "16659449956423075896",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/multicheckbox.component.ts",
+          "hash": "4815097663462050103",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@ngx-formly/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/multiple-input.component.ts",
+          "hash": "13272200488708598281",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/password.component.ts",
+          "hash": "4623178592474308927",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/radio.component.ts",
+          "hash": "3738243262771609433",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/select.component.ts",
+          "hash": "4485418973204241587",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs",
+            "npm:ng-zorro-antd"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/slider.component.ts",
+          "hash": "12022884067497500972",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/table.component.ts",
+          "hash": "8515276049644906924",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/text.component.ts",
+          "hash": "8824792990171104906",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/textarea.component.ts",
+          "hash": "4997872862364005647",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/unfold.component.ts",
+          "hash": "7429558387197736120",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/upload-file/upload-file.component.html",
+          "hash": "8394737387889473977"
+        },
+        {
+          "file": "libs/form/src/lib/form/types/upload-file/upload-file.component.ts",
+          "hash": "352625481297244492",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/upload-picture.component.ts",
+          "hash": "6946430029114354534",
+          "deps": [
+            "npm:@angular/core",
+            "npm:ng-zorro-antd",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/upload.component.ts",
+          "hash": "9912307413720470146",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs",
+            "npm:ng-zorro-antd"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/types/verify.component.ts",
+          "hash": "4578973938489336443",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/utils/form-utils.ts",
+          "hash": "7098157629056020232",
+          "deps": [
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/wrapper/panel-wrapper.component.html",
+          "hash": "4173959542365702882"
+        },
+        {
+          "file": "libs/form/src/lib/form/wrapper/panel-wrapper.component.spec.ts",
+          "hash": "14205005352878530179",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/form/src/lib/form/wrapper/panel-wrapper.component.ts",
+          "hash": "14960725802857126956",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core",
+            "npm:rxjs",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "libs/form/src/test-setup.ts",
+          "hash": "12935735732682149507",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/form/tsconfig.json",
+          "hash": "15487755565970508470"
+        },
+        {
+          "file": "libs/form/tsconfig.lib.json",
+          "hash": "5796668385415907511"
+        },
+        {
+          "file": "libs/form/tsconfig.spec.json",
+          "hash": "2927375835638640771"
+        }
+      ],
+      "admin": [
+        {
+          "file": "apps/admin/.eslintrc.json",
+          "hash": "5766322836225328418"
+        },
+        {
+          "file": "apps/admin/jest.config.ts",
+          "hash": "11332091400877278078"
+        },
+        {
+          "file": "apps/admin/project.json",
+          "hash": "15735733431835486645"
+        },
+        {
+          "file": "apps/admin/src/app/abstract/abstract-form.ts",
+          "hash": "12146738860843261827",
+          "deps": [
+            "npm:@angular/forms",
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/abstract/form-utils.ts",
+          "hash": "15068804200483906946",
+          "deps": [
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/app.component.html",
+          "hash": "17385897758380840601"
+        },
+        {
+          "file": "apps/admin/src/app/app.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/admin/src/app/app.component.spec.ts",
+          "hash": "18405072668117863868",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/app.component.ts",
+          "hash": "11948451863773846685",
+          "deps": [
+            "npm:@angular/core",
+            "npm:ng-zorro-antd",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/app.module.ts",
+          "hash": "8991628426765313453",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:@angular/platform-browser",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/app.routes.ts",
+          "hash": "1471246012467139857",
+          "deps": [
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/models/api.response.ts",
+          "hash": "10551869823974262330"
+        },
+        {
+          "file": "apps/admin/src/app/models/floating-ip.ts",
+          "hash": "13190059562575731060"
+        },
+        {
+          "file": "apps/admin/src/app/models/form-field-config.ts",
+          "hash": "12682922118314532333",
+          "deps": [
+            "npm:@angular/forms",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/models/index.ts",
+          "hash": "7232285602904703685"
+        },
+        {
+          "file": "apps/admin/src/app/models/instance-monitor.ts",
+          "hash": "4587826541013113108"
+        },
+        {
+          "file": "apps/admin/src/app/models/instance.ts",
+          "hash": "7873383281942628777"
+        },
+        {
+          "file": "apps/admin/src/app/nx-welcome.component.ts",
+          "hash": "13081993533107833981",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/routes/custom-form/custom-form.component.html",
+          "hash": "2795224053104989650"
+        },
+        {
+          "file": "apps/admin/src/app/routes/custom-form/custom-form.component.scss",
+          "hash": "4254933535514559151"
+        },
+        {
+          "file": "apps/admin/src/app/routes/custom-form/custom-form.component.spec.ts",
+          "hash": "9000726662405308712",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/routes/custom-form/custom-form.component.ts",
+          "hash": "2004646884839916852",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/routes/custom-form/custom-form.module.ts",
+          "hash": "8649800676693079734",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/copy-text/copy-text.component.html",
+          "hash": "16710952800570486266"
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/copy-text/copy-text.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/copy-text/copy-text.component.ts",
+          "hash": "12227441717820393702",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/formly-wrapper-form-field.component.ts",
+          "hash": "7483800381463340530",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/icon/icon.component.html",
+          "hash": "3751435786630118442"
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/icon/icon.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/icon/icon.component.ts",
+          "hash": "14351901892572306650",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/index.ts",
+          "hash": "3124284862131706827"
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/popover-copy/popover-copy.component.html",
+          "hash": "14874526421843802368"
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/popover-copy/popover-copy.component.scss",
+          "hash": "3874839495059710247"
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/popover-copy/popover-copy.component.ts",
+          "hash": "16880472321564937953",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/directive.module.ts",
+          "hash": "17608851396162116751"
+        },
+        {
+          "file": "apps/admin/src/app/shared/directives/index.ts",
+          "hash": "6378277905224203422"
+        },
+        {
+          "file": "apps/admin/src/app/shared/directives/ip-validator.directive.ts",
+          "hash": "3518280483954187495",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/directives/no-space-validator.directive.ts",
+          "hash": "4722051634805789007",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/pipe.module.ts",
+          "hash": "8724185214832300496"
+        },
+        {
+          "file": "apps/admin/src/app/shared/pipes/index.ts",
+          "hash": "2590342819063501361"
+        },
+        {
+          "file": "apps/admin/src/app/shared/pipes/volume-state.pipe.ts",
+          "hash": "5366156130046039084",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/shared-cdk.module.ts",
+          "hash": "14419523329464651414",
+          "deps": [
+            "npm:@angular/cdk"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/shared-component.module.ts",
+          "hash": "1476171098536985605"
+        },
+        {
+          "file": "apps/admin/src/app/shared/shared-zorro.module.ts",
+          "hash": "10639835795860751230",
+          "deps": [
+            "npm:ng-zorro-antd"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/shared.module.ts",
+          "hash": "13675940677293589478",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/router",
+            "npm:@ngx-formly/core",
+            "npm:@angular/platform-browser"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/third.module.ts",
+          "hash": "18275721204505591406",
+          "deps": [
+            "npm:@ngx-formly/ng-zorro-antd"
+          ]
+        },
+        {
+          "file": "apps/admin/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/admin/src/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/admin/src/index.html",
+          "hash": "3229960491377204248"
+        },
+        {
+          "file": "apps/admin/src/main.ts",
+          "hash": "1002270363173891731",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser-dynamic"
+          ]
+        },
+        {
+          "file": "apps/admin/src/styles.scss",
+          "hash": "4545278718323005215"
+        },
+        {
+          "file": "apps/admin/src/test-setup.ts",
+          "hash": "10765977267162271731",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "apps/admin/tsconfig.app.json",
+          "hash": "15840844869456775012"
+        },
+        {
+          "file": "apps/admin/tsconfig.editor.json",
+          "hash": "17575078801745175164"
+        },
+        {
+          "file": "apps/admin/tsconfig.json",
+          "hash": "12282366317280817438"
+        },
+        {
+          "file": "apps/admin/tsconfig.spec.json",
+          "hash": "1930986853382524452"
+        },
+        {
+          "file": "apps/admin/src/app/shared/directives/ng-form-ref.directive.ts",
+          "hash": "7706624373065955520",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/shared/components/custom.component.ts",
+          "hash": "10383152188877631335",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngx-formly/core"
+          ]
+        },
+        {
+          "file": "apps/admin/src/app/app.config.ts",
+          "hash": "15965367764412471514",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/router"
+          ]
+        }
+      ]
+    }
+  }
+}

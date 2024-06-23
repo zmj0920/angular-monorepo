@@ -1,0 +1,111 @@
+.formly-form-item-wrap {
+  .formly-item {
+    margin: 0 0 24px;
+
+    .popover-icon {
+      position: absolute;
+      margin-left: 8px;
+      margin-top: 2px;
+      color: #BEC3CE;
+      cursor: pointer;
+      line-height: inherit;
+    }
+  }
+
+  .ant-form-item-explain, .ant-form-item-extra {
+    margin-top: 4px;
+    line-height: 14px;
+    min-height: 14px;
+    padding-top: 0;
+  }
+
+  .formly-label {
+    line-height: 14px;
+    margin-bottom: 8px;
+    text-align: left;
+    width: 100%;
+
+    label {
+      color: #30323b;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
+      height: auto;
+
+      &::after {
+        content: "" !important;
+      }
+    }
+
+    .formly-label-popover-icon {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      max-width: calc(100% - 34px);
+      vertical-align: top;
+      padding-left: 4px;
+    }
+
+    .ant-form-item-required:not(.ant-form-item-required-mark-optional) {
+      &::before {
+        content: "*";
+        margin-right: 0;
+        color: #30323B;
+      }
+    }
+  }
+
+  .formly-template-wrap {
+    width: 100%;
+
+    .ant-form-item-control-input {
+      min-height: auto;
+    }
+
+    ng-formly-validation-message {
+      line-height: 1.5;
+      word-break: break-word;
+      word-wrap: break-word;
+    }
+
+    .formly-field-prompt {
+      color: #8d9199;
+      font-size: 12px;
+      margin-top: 4px;
+      line-height: 1.5;
+      word-break: break-word;
+      word-wrap: break-word;
+    }
+  }
+}
+
+.formly-item-wrap {
+  .formly-label {
+    line-height: 32px;
+    margin-bottom: 0;
+    width: 124px;
+    white-space: normal;
+    float: left;
+    text-align: left;
+  }
+
+  .formly-template-wrap {
+    float: left;
+    width: 432px;
+  }
+
+  .formly-item {
+    max-width: 650px;
+    nz-form-control {
+      width: 432px;
+    }
+  }
+}
+
+.ant-modal-wrap .ant-modal-body .formly-item-wrap .formly-label label {
+  font-size: 12px;
+  line-height: inherit;
+  height: auto;
+}

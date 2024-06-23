@@ -1,0 +1,31 @@
+<div class="formly-form-item-wrap" [ngClass]="{'formly-item-wrap': to.arrangement==='transverse'}">
+  <nz-form-item [ngStyle]="to.formlyItemStyle" [ngClass]="{'formly-item': field.type!=='alert'}" >
+    <nz-form-label class="formly-label" [ngStyle]="to.formlyLabelStyle" *ngIf="to.label && to.hideLabel !== true" [attr.for]="id"
+    [nzRequired]="to.required && to.hideRequiredMarker !== true">
+      <span title="{{ to.arrangement==='transverse' ? (to.label | translate) : '' }}"
+        [ngClass]="{'formly-label-popover-icon': to.popoverTitle || to.popoverContent}">
+        {{ to.label | translate }}
+      </span>
+      <i nz-icon
+        *ngIf="to.popoverTitle || to.popoverContent"
+        nzType="question-circle"
+        theme="fill"
+        nz-popover
+        class="popover-icon"
+        nzPlacement="right"
+        nzOverlayClassName="form-question-circle-container"
+        [nzPopoverTitle]="to.popoverTitleType==='string' ? (to.popoverTitle | translate) : to.popoverTitle"
+        [nzPopoverContent]="to.popoverContentType==='string' ? (to.popoverContent | translate) : to.popoverContent">
+      </i>
+    </nz-form-label>
+    <div class="formly-template-wrap">
+      <nz-form-control [nzValidateStatus]="validateStatus" [nzErrorTip]="errorTpl">
+        <ng-container #fieldComponent></ng-container>
+        <ng-template #errorTpl let-control>
+          <ng-formly-validation-message [field]="field"></ng-formly-validation-message>
+        </ng-template>
+      </nz-form-control>
+      <div class="formly-field-prompt" [hidden]="!to.prompt">{{to.prompt | translate}}</div>
+  </div>
+  </nz-form-item>
+</div>

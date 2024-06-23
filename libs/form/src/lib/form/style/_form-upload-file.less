@@ -1,0 +1,76 @@
+.formly-upload-file-wrap {
+  &:hover {
+    ng-icon {
+      display: initial;
+    }
+
+    .select-file {
+      padding-right: 35px;
+    }
+  }
+
+  ng-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    line-height: 1;
+    display: none;
+    cursor: pointer;
+
+    &:hover {
+       svg g {
+        fill: #8C9099;
+      }
+    }
+  }
+
+  .select-file {
+    width: 432px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #d4d4da;
+    border-radius: 4px;
+    background: #ffffff;
+    display: inline-flex;
+
+    button {
+      max-width: 200px;
+      height: 24px;
+      background: #7a5fe3;
+      line-height: 24px;
+      color: #ffffff;
+      font-size: 12px;
+      border-radius: 4px;
+      margin-left: 3px;
+      margin-top: 3px;
+      padding: 0 8px;
+
+      span {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        display: block;
+      }
+    }
+
+    .tip {
+      color: #30323b;
+      margin-left: 8px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .placeholder {
+      color: #8d9199;
+    }
+  }
+
+  .upload-disabled {
+    background-color: #F5F7FA;
+  }
+
+  .error-border {
+    border-color: #EE6B63;
+  }
+}

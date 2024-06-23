@@ -89,11 +89,12 @@ export class CustomFormComponent {
     },
     {
       key: 'custom',
-      type: 'input',
+      type: 'custom',
       templateOptions: {
         label: 'custom',
         placeholder: 'Input placeholder',
         required: true,
+        render: 'textarea',
       },
       validation: {
         messages: {

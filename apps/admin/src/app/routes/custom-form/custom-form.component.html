@@ -23,7 +23,26 @@
   </nz-content>
 </nz-layout>
 
-<ng-template #customTemplate let-model="model" let-field="field">
-  <label>{{ field.templateOptions.label }}</label>
-  <input type="text" [formControl]="field.formControl" [(ngModel)]="model[field.key]">
+<ng-template ngFormRef="custom_template">
+  <span>custom template</span>
+</ng-template>
+
+<ng-template
+  ngFormRef="textarea"
+  let-to="to"
+  let-control="formControl"
+  let-field="field"
+>
+  <nz-form-control>
+    <textarea
+      [ngStyle]="{ 'margin-bottom': '0' }"
+      nz-input
+      [placeholder]="to.placeholder"
+      [formControl]="control"
+      [cols]="to.cols"
+      [rows]="to.rows || 4"
+      class="form-control"
+      [formlyAttributes]="field"
+    ></textarea>
+  </nz-form-control>
 </ng-template>

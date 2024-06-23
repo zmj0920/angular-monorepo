@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@angular-monorepo/form": ["libs/form/src/index.ts"],
       "@angular-monorepo/libs": ["libs/src/index.ts"],
       "@libs/ng-table": ["libs/ng-table/src/index.ts"]
     }

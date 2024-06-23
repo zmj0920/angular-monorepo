@@ -6,10 +6,7 @@ import { FieldWrapper } from '@ngx-formly/core';
   template: `
     <nz-form-item>
       <ng-container *ngIf="to.label">
-        <nz-form-label
-          [nzRequired]="to.required"
-          [nzFor]="id"
-        >
+        <nz-form-label [nzRequired]="to.required" [nzFor]="id">
           {{ to.label }}
         </nz-form-label>
       </ng-container>

@@ -1,0 +1,13 @@
+<form nz-form [formGroup]="form">
+  <div class="prompt-info" *ngIf="showMessage && errorMessage">
+    {{ errorMessage }}
+  </div>
+  <formly-form *ngIf="type==='common'" [model]="model" [fields]="fields" [options]="options" [form]="form">
+  </formly-form>
+  <nz-tabset *ngIf="type==='tab'">
+    <nz-tab *ngFor="let tab of tabs;let index = index;" [nzTitle]="tab.label">
+      <formly-form [form]="formArray!.at(index)" [model]="model" [fields]="tab.fields" [options]="optionsArray![index]">
+      </formly-form>
+    </nz-tab>
+  </nz-tabset>
+</form>

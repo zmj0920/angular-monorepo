@@ -1,0 +1,35 @@
+<nz-form-control class="formly-upload-file-wrap">
+  <input nz-input
+    [hidden]="true"
+    [formlyAttributes]="field"
+    [formControl]="formControl">
+  <input nz-input
+    [hidden]="true"
+    #selectFile
+    type="file"
+    (change)="changeSelectFile($event)">
+  <ng-icon *ngIf="!to.disabled && formControl.value"
+    [type]="'clear'"
+    [color]="'#BEC3CE'"
+    [size]="'12px'"
+    (click)="clearData()"></ng-icon>
+  <div class="select-file" [ngClass]="{'upload-disabled': to.disabled, 'error-border': formControl.dirty && formControl.invalid}">
+    <button nz-button
+      [disabled]="to.disabled"
+      nzType="primary"
+      (click)="clickSelectFile()"
+      [title]="(to.btnName || '') | translate">
+      {{(to.btnName || '') | translate}}
+    </button>
+    <span class="tip placeholder"
+      *ngIf="!selectFile.files.length">
+        {{(to.placeholder || '') | translate}}
+    </span>
+    <span
+      title="{{selectFile.files[0].name}}"
+      class="tip"
+      *ngIf="selectFile.files.length">
+      {{selectFile.files[0].name}}
+    </span>
+  </div>
+</nz-form-control>

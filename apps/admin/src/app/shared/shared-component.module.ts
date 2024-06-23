@@ -1,5 +1,6 @@
 import {
   CopyTextComponent,
+  FormlyFieldCustomComponent,
   FormlyWrapperFormFieldComponent,
   IconComponent,
   PopoverCopyComponent,
@@ -10,4 +11,5 @@ export const SHARED_COMPOENT_MODULES = [
   IconComponent,
   PopoverCopyComponent,
   FormlyWrapperFormFieldComponent,
+  FormlyFieldCustomComponent,
 ];
