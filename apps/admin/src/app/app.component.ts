@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 import {
@@ -14,10 +15,11 @@ import {
 } from 'rxjs';
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  template: `<router-outlet />`,
+  standalone: true,
+  imports: [RouterOutlet],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   // 选项卡切换
   private tabChange$ = new Subject<number>();
   private subscription!: Subscription;

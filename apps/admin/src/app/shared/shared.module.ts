@@ -15,16 +15,12 @@ import {
   FormlyWrapperFormFieldComponent,
 } from './components';
 import { FormRefSourceService } from './directives';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
     // FormlyModule,
     FormlyModule.forChild({
@@ -52,8 +48,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   exports: [
     CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     // RouterModule,

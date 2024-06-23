@@ -29,7 +29,7 @@
 
 <ng-template
   ngFormRef="textarea"
-  let-to="to"
+  let-props="props"
   let-control="formControl"
   let-field="field"
 >
@@ -37,10 +37,10 @@
     <textarea
       [ngStyle]="{ 'margin-bottom': '0' }"
       nz-input
-      [placeholder]="to.placeholder"
+      [placeholder]="props.placeholder"
       [formControl]="control"
-      [cols]="to.cols"
-      [rows]="to.rows || 4"
+      [cols]="props.cols"
+      [rows]="props.rows || 4"
       class="form-control"
       [formlyAttributes]="field"
     ></textarea>

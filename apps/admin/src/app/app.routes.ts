@@ -8,4 +8,5 @@ export const appRoutes: Route[] = [
         (_) => _.CustomFormModule
       ),
   },
+  { path: '**', redirectTo: '' },
 ];
