@@ -4,9 +4,8 @@ import { Component, ViewChild, ViewContainerRef, ViewEncapsulation, TemplateRef 
 import { FieldWrapper } from '@ngx-formly/core';
 import { OnInit, OnDestroy } from '@angular/core';
 import { takeUntil, tap } from 'rxjs/operators';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { AbstractControl, FormControl } from '@angular/forms';
-// import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 
 import { FormRefSourceService } from '../directive/ng-form-ref.directive';
 
@@ -18,9 +17,8 @@ import { FormRefSourceService } from '../directive/ng-form-ref.directive';
 })
 
 export class FormlyWrapperFormFieldComponent extends FieldWrapper implements OnInit, OnDestroy {
-  @ViewChild('fieldComponent', { read: ViewContainerRef, static: true }) fieldComponent!: ViewContainerRef;
+  @ViewChild('fieldComponent', { read: ViewContainerRef, static: true }) override fieldComponent!: ViewContainerRef;
   onDestroy$ = new Subject<void>();
-  langSubscribe$!: Subscription;
 
   get validateStatus(): string {
     if (this.formControl instanceof FormControl) {
@@ -34,73 +32,70 @@ export class FormlyWrapperFormFieldComponent extends FieldWrapper implements OnI
 
   constructor(
     private dataSource: FormRefSourceService,
-    private translate: TranslateService,
   ) {
     super();
   }
 
   ngOnInit() {
-    this.transPlaceholder();
-    this.langSubscribe$ = this.translate.onLangChange.subscribe((event: TranslationChangeEvent) => {
-      this.transPlaceholder();
-    });
-
     this.formControl.valueChanges.pipe(
       takeUntil(this.onDestroy$),
       tap(val => {
-        if (this.to.checkPath) {
+        if (this.props['checkPath']) {
           let paths = [];
-          if (Array.isArray(this.to.checkPath)) {
-            paths = this.to.checkPath;
+          if (Array.isArray(this.props['checkPath'])) {
+            paths = this.props['checkPath'];
           } else {
-            paths.push(this.to.checkPath);
+            paths.push(this.props['checkPath']);
           }
           paths.forEach(path => {
-            const controls = this.formControl.parent.controls as {[key: string]: AbstractControl};
-            const checkControl = controls[path];
-            if (!checkControl?.dirty) {
-              checkControl.markAsUntouched();
+            if(this.formControl && this.formControl.parent){
+              const controls = this.formControl.parent.controls as {[key: string]: AbstractControl};
+              const checkControl = controls[path];
+              if (!checkControl?.dirty) {
+                checkControl.markAsUntouched();
+              }
             }
+          
           });
         }
       }),
     ).subscribe();
 
-    if (this.to.popoverTitleRender) {
-      const title = this.dataSource.getRender(this.to.popoverTitleRender);
+    if (this.props['popoverTitleRender']) {
+      const title = this.dataSource.getRender(this.props['popoverTitleRender']);
       if (title) {
-        this.to.popoverTitleType = 'TemplateRef';
-        this.to.popoverTitle = title;
+        this.props['popoverTitleType'] = 'TemplateRef';
+        this.props['popoverTitle'] = title;
       }
-    } else if (this.to.popoverTitle) {
-      if (this.isString(this.to.popoverTitle)) {
-        this.to.popoverTitleType = 'string';
+    } else if (this.props['popoverTitle']) {
+      if (this.isString(this.props['popoverTitle'])) {
+        this.props['popoverTitleType'] = 'string';
       } else {
-        this.to.popoverTitleType = 'TemplateRef';
+        this.props['popoverTitleType'] = 'TemplateRef';
       }
     }
 
-    if (this.to.popoverContentRender) {
-      const content = this.dataSource.getRender(this.to.popoverContentRender);
+    if (this.props['popoverContentRender']) {
+      const content = this.dataSource.getRender(this.props['popoverContentRender');
       if (content) {
-        this.to.popoverContentType = 'TemplateRef';
-        this.to.popoverContent = content;
+        this.props['popoverContentType'] = 'TemplateRef';
+        this.props['popoverContent'] = content;
       }
-    } else if (this.to.popoverTitle) {
-      if (this.isString(this.to.popoverTitle)) {
-        this.to.popoverContentType = 'string';
+    } else if (this.props['popoverTitle']) {
+      if (this.isString(this.props['popoverTitle'])) {
+        this.props['popoverContentType'] = 'string';
       } else {
-        this.to.popoverContentType = 'TemplateRef';
+        this.props['popoverContentType']= 'TemplateRef';
       }
     }
   }
 
   transPlaceholder() {
-    if (!this.to.placeholderTmp && this.to.placeholder?.includes('.')) {
-      this.to.placeholderTmp = this.to.placeholder;
+    if (!this.props['placeholderTmp'] && this.props['placeholder']?.includes('.')) {
+      this.props['placeholderTmp'] = this.props.placeholder;
     }
-    if (this.to.placeholderTmp) {
-      this.to.placeholder = this.translate.instant(this.to.placeholderTmp);
+    if (this.props['placeholderTmp']) {
+      this.props.placeholder = this.props['placeholderTmp'];
     }
   }
 
@@ -109,9 +104,6 @@ export class FormlyWrapperFormFieldComponent extends FieldWrapper implements OnI
   }
 
   ngOnDestroy(): void {
-    if (this.langSubscribe$) {
-      this.langSubscribe$.unsubscribe();
-    }
     this.onDestroy$.next();
     this.onDestroy$.complete();
   }

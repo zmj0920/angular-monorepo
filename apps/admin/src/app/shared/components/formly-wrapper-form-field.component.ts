@@ -5,17 +5,31 @@ import { FieldWrapper } from '@ngx-formly/core';
   selector: 'formly-wrapper-nz-form-field',
   template: `
     <nz-form-item>
-      <ng-container *ngIf="to.label">
-        <nz-form-label [nzRequired]="to.required" [nzFor]="id">
-          {{ to.label }}
+      <ng-container *ngIf="props['label']">
+        <nz-form-label
+          [nzTooltipTitle]="props['nzTooltipTitle'] ? nzTooltipTitle : undefined"
+          [nzRequired]="props['required']"
+          [nzFor]="id"
+        >
+          {{ props['label'] }}
         </nz-form-label>
+        <ng-template #nzTooltipTitle>
+          {{ props['nzTooltipTitle'] }}
+        </ng-template>
       </ng-container>
-      <nz-form-control [nzValidateStatus]="errorState" [nzErrorTip]="errorTpl">
+      <nz-form-control
+        [nzValidateStatus]="errorState"
+        nzExtra="nzExtra"
+        [nzErrorTip]="errorTpl"
+      >
         <ng-container #fieldComponent></ng-container>
         <ng-template #errorTpl let-control>
           <formly-validation-message
             [field]="field"
           ></formly-validation-message>
+        </ng-template>
+        <ng-template #nzExtra>
+          {{ props['nzExtra'] }}
         </ng-template>
       </nz-form-control>
     </nz-form-item>
