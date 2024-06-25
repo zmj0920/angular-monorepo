@@ -8,6 +8,7 @@ import { FieldWrapper } from '@ngx-formly/core';
       <ng-container *ngIf="props['label']">
         <nz-form-label
           [nzTooltipTitle]="props['nzTooltipTitle'] ? nzTooltipTitle : undefined"
+          nzTooltipIcon="info-circle"
           [nzRequired]="props['required']"
           [nzFor]="id"
         >
