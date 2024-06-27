@@ -9,7 +9,7 @@ import {
   output,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 function trimString(value: string | undefined) {
   return value?.trim() ?? '';
@@ -38,10 +38,20 @@ export class CustomFormComponent {
   // afterRender 和 afterNextRender 必须在 注入上下文中调用，通常是在组件的构造函数中。
   // afterNextRender	当所有组件都已渲染到 DOM 时运行一次。
   // afterRender	每次所有组件都渲染到 DOM 时运行。
-
+  inputValue?: string;
   form = new FormGroup({});
-  model = {};
+  model: any = {};
+  options: FormlyFormOptions = {};
+
   fields: FormlyFieldConfig[] = [
+    {
+      key: 'msg1',
+      type: 'alert',
+      props: {
+        nzType: 'success',
+        nzMessage: 'Success Text',
+      },
+    },
     {
       key: 'input',
       type: 'input',
@@ -49,7 +59,15 @@ export class CustomFormComponent {
         label: 'Input',
         placeholder: 'Input placeholder',
         required: true,
+        nzTooltipIcon: {
+          type: 'info-circle',
+          theme: 'outline'
+        },
+        nzTooltipTitle: 'custom_template',
+        nzHasFeedback: true,
+        nzExtra: '说明',
       },
+      wrappers: ['panel'],
       validation: {
         messages: {
           required: '请输入姓名',
@@ -126,12 +144,14 @@ export class CustomFormComponent {
         required: true,
         render: 'textarea',
         // [nzTooltipTitle]	配置提示信息	string | TemplateRef<void>
+        // [nzExtra]	用于显示表单额外提示信息	string | TemplateRef<void>
+
         // [nzTooltipIcon]	配置提示信息的图标	string | NzFormTooltipIcon
         // captchaTooltipIcon: NzFormTooltipIcon = {
         //   type: 'info-circle',
         //   theme: 'twotone'
         // };
-        // [nzExtra]	用于显示表单额外提示信息	string | TemplateRef<void>
+
         // [nzHasFeedback]	配合 nzValidateStatus 属性使用，展示校验状态图标	boolean	false
       },
       validation: {
@@ -139,22 +159,23 @@ export class CustomFormComponent {
           required: '请输入姓名',
         },
       },
-      wrappers: ['custom'],
     },
   ];
 
   constructor(elementRef: ElementRef) {
     // 可以选择性地指定一个 phase。该阶段让你可以控制 DOM 操作的顺序，在 写操作之前进行 读操作，以最小化 布局抖动。
-    afterRender(
-      () => {
-        // Focus the first input element in this component.
-        elementRef.nativeElement.querySelector('input')?.focus();
-      },
-      { phase: AfterRenderPhase.Read }
-    );
+    // afterRender(
+    //   () => {
+    //     // Focus the first input element in this component.
+    //     elementRef.nativeElement.querySelector('input')?.focus();
+    //   },
+    //   { phase: AfterRenderPhase.Read }
+    // );
   }
 
   onSubmit() {
+    this.form.markAllAsTouched();
+    this.form.updateValueAndValidity();
     if (this.form.valid) {
       alert(JSON.stringify(this.model, null, 2));
     }

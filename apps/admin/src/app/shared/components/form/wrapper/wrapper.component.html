@@ -1,0 +1,31 @@
+<div class="formly-form-item-wrap">
+  <nz-form-item [ngClass]="{ 'formly-item-alert': field.type === 'alert' }">
+    <ng-container *ngIf="props['label'] && props['hideLabel'] !== true">
+      <nz-form-label
+        class="formly-label"
+        [ngStyle]="props['formlyLabelStyle']"
+        [nzTooltipTitle]="
+          props['_nzTooltipTitle']
+            ? props['_nzTooltipTitle']
+            : props['nzTooltipTitle']
+        "
+        [nzRequired]="props['required'] && props['hideRequiredMarker'] !== true"
+        [nzFor]="id"
+        [nzNoColon]="props['nzNoColon']"
+        [nzTooltipIcon]="props['_nzTooltipIcon']"
+      >
+        {{ props['label'] }}
+      </nz-form-label>
+    </ng-container>
+    <nz-form-control
+      [nzValidateStatus]="errorState"
+      [nzExtra]="props['_nzExtra'] ? props['_nzExtra'] : props['nzExtra']"
+      [nzErrorTip]="errorTpl"
+    >
+      <ng-container #fieldComponent></ng-container>
+      <ng-template #errorTpl let-control>
+        <formly-validation-message [field]="field"></formly-validation-message>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+</div>

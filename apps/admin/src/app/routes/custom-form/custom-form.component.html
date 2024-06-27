@@ -7,16 +7,15 @@
       <nz-breadcrumb-item>NG-ZORRO</nz-breadcrumb-item>
     </nz-breadcrumb>
     <div class="inner-content">
-      <form
-        nz-form
-        [nzLayout]="'vertical'"
-        [formGroup]="form"
-        (ngSubmit)="onSubmit()"
-      >
-        <formly-form [form]="form" [model]="model" [fields]="fields">
-        </formly-form>
-
-        <button nz-button nzType="primary" type="submit">Submit</button>
+      <!-- <textarea rows="4" nz-input [(ngModel)]="inputValue"></textarea> -->
+      <form nz-form nzLayout="vertical" [formGroup]="form">
+        <formly-form
+          [model]="model"
+          [fields]="fields"
+          [options]="options"
+          [form]="form"
+        ></formly-form>
+        <button nz-button nzType="primary" (click)="onSubmit()">Submit</button>
         <button nz-button nzDanger>Reset</button>
       </form>
     </div>
@@ -24,7 +23,7 @@
 </nz-layout>
 
 <ng-template ngFormRef="custom_template">
-  <span>custom template</span>
+  <span style="color: red;">custom template</span>
 </ng-template>
 
 <ng-template
@@ -33,16 +32,20 @@
   let-control="formControl"
   let-field="field"
 >
-  <nz-form-control>
-    <textarea
-      [ngStyle]="{ 'margin-bottom': '0' }"
-      nz-input
-      [placeholder]="props.placeholder"
-      [formControl]="control"
-      [cols]="props.cols"
-      [rows]="props.rows || 4"
-      class="form-control"
-      [formlyAttributes]="field"
-    ></textarea>
-  </nz-form-control>
+  <textarea
+    nz-input
+    placeholder="{{ props.placeholder}}"
+    [formControl]="control"
+    [cols]="props.cols"
+    [rows]="props.rows || 4"
+    [class.ant-input-status-error]="control.touched && control.invalid"
+    [formlyAttributes]="field"
+  ></textarea>
+  <!-- <input
+    nz-input
+    [placeholder]="props.placeholder"
+    [formControl]="control"
+    [class.ant-input-status-error]="control.touched && control.invalid"
+    [formlyAttributes]="field"
+  /> -->
 </ng-template>

@@ -1,6 +1,6 @@
+import { NgFormRefDirective } from './components';
 import {
   Ipv4ValidatorDirective,
-  NgFormRefDirective,
   NoSpaceValidatorDirective,
 } from './directives';
 export const DIRECTIVES_MODULES = [

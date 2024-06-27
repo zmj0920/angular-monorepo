@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
-import { FormRefSourceService } from './form';
+import { FormRefSourceService } from '../ng-form-ref.directive';
 
 @Component({
   selector: 'ng-formly-field-custom',
   template: `
-    <div class="custom-item">
-      <ng-template
-        [ngTemplateOutlet]="getTemplate(props['render'])"
-        [ngTemplateOutletContext]="{
-          props: this.props,
-          formControl: this.formControl,
-          field: this.field
-        }"
+    <ng-template
+      [ngTemplateOutlet]="getTemplate(props['render'])"
+      [ngTemplateOutletContext]="{
+        props: props,
+        formControl: formControl,
+        field: field
+      }"
+    >
       >
-        >
-      </ng-template>
-    </div>
+    </ng-template>
   `,
 })
 export class FormlyFieldCustomComponent extends FieldType {

@@ -10,11 +10,22 @@ import { SHARED_CDK_MODULES } from './shared-cdk.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 import { THIRDMODULES } from './third.module';
 import { FormlyModule } from '@ngx-formly/core';
+import { IconDefinition } from '@ant-design/icons-angular';
+import * as AllIcons from '@ant-design/icons-angular/icons';
 import {
+  FormlyFieldAlertComponent,
   FormlyFieldCustomComponent,
-  FormlyWrapperFormFieldComponent,
+  WrapperComponent,
 } from './components';
-import { FormRefSourceService } from './directives';
+import { SHARED_SERVICE } from './shared-service.module';
+import { NZ_ICONS } from 'ng-zorro-antd/icon';
+
+const antDesignIcons = AllIcons as {
+  [key: string]: IconDefinition;
+};
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
+  (key) => antDesignIcons[key]
+);
 
 @NgModule({
   imports: [
@@ -28,12 +39,18 @@ import { FormRefSourceService } from './directives';
         {
           name: 'custom',
           component: FormlyFieldCustomComponent,
+          wrappers: ['panel'],
+        },
+        {
+          name: 'alert',
+          component: FormlyFieldAlertComponent,
+          wrappers: ['panel'],
         },
       ],
       wrappers: [
         {
-          name: 'custom',
-          component: FormlyWrapperFormFieldComponent,
+          name: 'panel',
+          component: WrapperComponent,
         },
       ],
     }),
@@ -65,6 +82,6 @@ import { FormRefSourceService } from './directives';
     // your cdk
     ...SHARED_CDK_MODULES,
   ],
-  providers: [FormRefSourceService],
+  providers: [...SHARED_SERVICE, { provide: NZ_ICONS, useValue: icons }],
 })
 export class SharedModule {}

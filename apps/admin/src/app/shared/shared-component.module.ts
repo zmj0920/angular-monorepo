@@ -2,8 +2,9 @@ import {
   CopyTextComponent,
   FormlyFieldCustomComponent,
   IconComponent,
-  FormlyWrapperFormFieldComponent,
+  WrapperComponent,
   PopoverCopyComponent,
+  FormlyFieldAlertComponent,
 } from './components';
 
 export const SHARED_COMPOENT_MODULES = [
@@ -11,5 +12,6 @@ export const SHARED_COMPOENT_MODULES = [
   IconComponent,
   PopoverCopyComponent,
   FormlyFieldCustomComponent,
-  FormlyWrapperFormFieldComponent
+  WrapperComponent,
+  FormlyFieldAlertComponent
 ];

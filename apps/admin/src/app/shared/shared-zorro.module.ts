@@ -37,7 +37,6 @@ import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
-
 export const SHARED_ZORRO_MODULES = [
   NzButtonModule,
   NzMessageModule,

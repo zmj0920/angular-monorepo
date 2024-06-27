@@ -183,7 +183,7 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
         { name: 'unfold', component: FormlyFieldUnfoldComponent, wrappers: ['form-field'] },
         { name: 'ip', component: FormlyFieldIPComponent, wrappers: ['form-field'] },
         { name: 'multiple-input', component: FormlyFieldMultipleInputComponent, wrappers: ['form-field'] },
-        { name: 'alert', component: FormlyFieldAlertComponent, wrappers: ['form-field'] },
+        // { name: 'alert', component: FormlyFieldAlertComponent, wrappers: ['form-field'] },
         { name: 'cidr', component: FormlyFieldCidrComponent, wrappers: ['form-field'] },
       ],
       wrappers: [
