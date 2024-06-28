@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -9,16 +9,13 @@ import { PROVIDERS_PIPES_MODULES } from './pipe.module';
 import { SHARED_CDK_MODULES } from './shared-cdk.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 import { THIRDMODULES } from './third.module';
-import { FormlyModule } from '@ngx-formly/core';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
-import {
-  FormlyFieldAlertComponent,
-  FormlyFieldCustomComponent,
-  WrapperComponent,
-} from './components';
 import { SHARED_SERVICE } from './shared-service.module';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
+import { NgFormModule } from './components/form/ng-form.module';
+import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
+import zh from '@angular/common/locales/zh';
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
@@ -26,34 +23,14 @@ const antDesignIcons = AllIcons as {
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
   (key) => antDesignIcons[key]
 );
-
+registerLocaleData(zh);
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    // FormlyModule,
-    FormlyModule.forChild({
-      types: [
-        {
-          name: 'custom',
-          component: FormlyFieldCustomComponent,
-          wrappers: ['panel'],
-        },
-        {
-          name: 'alert',
-          component: FormlyFieldAlertComponent,
-          wrappers: ['panel'],
-        },
-      ],
-      wrappers: [
-        {
-          name: 'panel',
-          component: WrapperComponent,
-        },
-      ],
-    }),
+    NgFormModule,
     ...SHARED_ZORRO_MODULES,
     ...THIRDMODULES,
     ...SHARED_CDK_MODULES,
@@ -69,7 +46,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
     ReactiveFormsModule,
     // RouterModule,
     ReactiveFormsModule,
-    FormlyModule,
+    NgFormModule,
     ...SHARED_ZORRO_MODULES,
     // third libs
     ...THIRDMODULES,
@@ -82,6 +59,10 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
     // your cdk
     ...SHARED_CDK_MODULES,
   ],
-  providers: [...SHARED_SERVICE, { provide: NZ_ICONS, useValue: icons }],
+  providers: [
+    ...SHARED_SERVICE,
+    { provide: NZ_I18N, useValue: zh_CN },
+    { provide: NZ_ICONS, useValue: icons },
+  ],
 })
 export class SharedModule {}

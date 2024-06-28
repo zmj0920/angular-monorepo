@@ -4,17 +4,20 @@ import {
   Input,
   OnInit,
   TemplateRef,
+  inject,
 } from '@angular/core';
 
 @Injectable()
 export class FormRefSourceService {
-  private static renderSource: any = {};
+  private static renderSource: {
+    [key: string]: TemplateRef<void | undefined>;
+  } = {};
 
   add(path: string, ref: TemplateRef<void>) {
     FormRefSourceService.renderSource[path] = ref;
   }
 
-  getRender(path: string) {
+  getRender(path: string): TemplateRef<any> {
     return FormRefSourceService.renderSource[path];
   }
 }
@@ -23,14 +26,11 @@ export class FormRefSourceService {
   selector: '[ngFormRef]',
 })
 export class NgFormRefDirective implements OnInit {
+  private readonly source = inject(FormRefSourceService);
+  private readonly ref = inject(TemplateRef);
   @Input() ngFormRef!: string;
 
-  constructor(
-    private templateRef: TemplateRef<void>,
-    private source: FormRefSourceService
-  ) {}
-
   ngOnInit(): void {
-    this.source.add(this.ngFormRef, this.templateRef);
+    this.source.add(this.ngFormRef, this.ref);
   }
 }

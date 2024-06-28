@@ -2,14 +2,24 @@ import {
   ChangeDetectorRef,
   Component,
   OnInit,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { FieldWrapper } from '@ngx-formly/core';
+import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
 import { isTemplateRef } from 'ng-zorro-antd/core/util';
 import { FormRefSourceService } from '../ng-form-ref.directive';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
-import { NzConfigService } from 'ng-zorro-antd/core/config';
-// [nzTooltipIcon]="props['nzTooltipIcon'] ? props['nzTooltipIcon'] : ''"
+import { FormlyFieldProps } from '@ngx-formly/ng-zorro-antd/form-field/form-field.wrapper';
+export interface WrapperProps extends FormlyFieldProps {
+  nzTooltipIcon: NzFormTooltipIcon;
+  _nzTooltipIcon?: string | NzFormTooltipIcon;
+  nzTooltipTitle: string;
+  _nzTooltipTitle?: TemplateRef<void>;
+  nzExtra: string;
+  _nzExtra?: TemplateRef<void>;
+  formlyLabelStyle: Record<string, any>;
+  nzNoColon: boolean;
+}
 
 @Component({
   selector: 'form-wrapper',
@@ -20,19 +30,16 @@ import { NzConfigService } from 'ng-zorro-antd/core/config';
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
 })
-export class WrapperComponent extends FieldWrapper implements OnInit {
+export class WrapperComponent
+  extends FieldWrapper<FormlyFieldConfig<WrapperProps>>
+  implements OnInit
+{
   get errorState() {
     return this.showError ? 'error' : '';
   }
 
-  // captchaTooltipIcon: NzFormTooltipIcon = {
-  //   type: 'info-circle',
-  //   theme: 'twotone',
-  // };
-
   constructor(
     private dataSource: FormRefSourceService,
-    private nzConfigService: NzConfigService,
     private cdr: ChangeDetectorRef
   ) {
     super();
@@ -41,8 +48,8 @@ export class WrapperComponent extends FieldWrapper implements OnInit {
     // this.formControl.statusChanges.subscribe(() => this.cdr.detectChanges());
     if (this.props['nzTooltipIcon']) {
       this.props['_nzTooltipIcon'] = {
-        type: this.props['nzTooltipIcon'].type || 'info-circle',
-        theme: this.props['nzTooltipIcon'].theme || 'outline',
+        type: this.props['nzTooltipIcon']?.type || 'info-circle',
+        theme: this.props['nzTooltipIcon']?.theme || 'outline',
       };
     }
     if (this.props['nzTooltipTitle']) {

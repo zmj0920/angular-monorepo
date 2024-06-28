@@ -29,7 +29,6 @@ export const appConfig: ApplicationConfig = {
       }),
       withComponentInputBinding()
     ),
-
     importProvidersFrom(SharedModule),
     provideZoneChangeDetection({ eventCoalescing: true }),
   ],

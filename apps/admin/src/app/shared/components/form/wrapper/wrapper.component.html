@@ -12,7 +12,7 @@
         [nzRequired]="props['required'] && props['hideRequiredMarker'] !== true"
         [nzFor]="id"
         [nzNoColon]="props['nzNoColon']"
-        [nzTooltipIcon]="props['_nzTooltipIcon']"
+        [nzTooltipIcon]="props['_nzTooltipIcon'] || ''"
       >
         {{ props['label'] }}
       </nz-form-label>

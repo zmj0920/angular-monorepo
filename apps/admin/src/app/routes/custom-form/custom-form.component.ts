@@ -61,7 +61,7 @@ export class CustomFormComponent {
         required: true,
         nzTooltipIcon: {
           type: 'info-circle',
-          theme: 'outline'
+          theme: 'twotone',
         },
         nzTooltipTitle: 'custom_template',
         nzHasFeedback: true,
@@ -71,6 +71,50 @@ export class CustomFormComponent {
       validation: {
         messages: {
           required: '请输入姓名',
+        },
+      },
+    },
+    {
+      key: 'number',
+      type: 'input',
+      templateOptions: {
+        label: 'number',
+        placeholder: 'Input placeholder',
+        type: 'number',
+        required: true,
+      },
+      // validators: {
+      //   required: {
+      //     expression: (c: { value: any }) => {
+      //       if (!c.value) {
+      //         return false;
+      //       }
+      //       return true;
+      //     },
+      //     message: () => 'This field is required',
+      //   },
+      //   maxAge: {
+      //     expression: (c: { value: number }) => {
+      //       if (c.value && c.value > 40) {
+      //         return false;
+      //       }
+      //       return true;
+      //     },
+      //     message: () => 'This value should be less than 40',
+      //   },
+      //   minAge: {
+      //     expression: (c: { value: number }) => {
+      //       if (c.value && c.value < 18) {
+      //         return false;
+      //       }
+      //       return true;
+      //     },
+      //     message: () => 'This value should be more than 18',
+      //   },
+      // },
+      validation: {
+        messages: {
+          required: '请输入',
         },
       },
     },
@@ -90,9 +134,25 @@ export class CustomFormComponent {
     },
     {
       key: 'checkbox',
-      type: 'checkbox',
+      type: 'multicheckbox',
       templateOptions: {
         label: 'Checkbox',
+        multiple: true,
+        change: (f, v: any) => {
+          if (v) {
+            console.log(v);
+          }
+        },
+        options: [
+          {
+            key: 'blue',
+            label: 'blue',
+          },
+          {
+            key: 'red',
+            label: 'red',
+          },
+        ],
       },
     },
     {
@@ -102,6 +162,7 @@ export class CustomFormComponent {
         label: 'Select',
         placeholder: 'Select placeholder',
         required: true,
+        multiple: true,
         options: [
           { label: 'Option 1', value: '1' },
           { label: 'Option 2', value: '2' },
@@ -158,6 +219,15 @@ export class CustomFormComponent {
         messages: {
           required: '请输入姓名',
         },
+      },
+    },
+    {
+      key: 'date-picker',
+      type: 'date-picker',
+      props: {
+        label: 'date-picker',
+        nzMode: 'week',
+        required: true,
       },
     },
   ];
