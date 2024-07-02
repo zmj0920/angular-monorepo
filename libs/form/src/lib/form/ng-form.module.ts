@@ -38,14 +38,11 @@ import { NgModalFormService } from './ng-modal-form.service';
 import { FormlyWrapperFormFieldComponent } from './wrapper/panel-wrapper.component';
 import { FormlySelectOptionsPipe } from './pipe/select-options.pipe';
 import { FormlyFieldCheckboxComponent } from './types/checkbox.component';
-import { FormlyFieldDateComponent } from './types/date.component';
 import { FormlyFieldInputComponent } from './types/input.component';
 import { FormlyFieldMultiCheckboxComponent } from './types/multicheckbox.component';
 import { FormlyFieldRadioComponent } from './types/radio.component';
 import { FormlyFieldSelectComponent } from './types/select.component';
 import { FormlyFieldSliderComponent } from './types/slider.component';
-import { FormlyFieldTextAreaComponent } from './types/textarea.component';
-import { FormlyFieldTextComponent } from './types/text.component';
 import { FormlyFieldPasswordComponent } from './types/password.component';
 import { FormlyFieldUploadComponent } from './types/upload.component';
 import { FormlyFieldUploadPictureComponent } from './types/upload-picture.component';
@@ -55,7 +52,6 @@ import { FormlyFieldVerifyComponent } from './types/verify.component';
 import { FormlyFieldUnfoldComponent } from './types/unfold.component';
 import { FormlyFieldIPComponent } from './types/ip.component';
 import { FormlyFieldMultipleInputComponent } from './types/multiple-input.component';
-import { FormlyFieldAlertComponent } from './types/alert.component';
 import { FormlyFieldTableComponent } from './types/table.component';
 import { FormlyFieldCustomComponent } from './types/custom.component';
 import { FormlyFieldCidrComponent } from './types/cidr.component';
@@ -64,9 +60,7 @@ import { CustomAutoCompleteComponent } from './types/custom-auto-complete.compon
 import { TextInputAutocompleteDirective } from './components/text-input-autocomplete/text-input-autocomplete.directive';
 import { TextInputAutocompleteContainerComponent } from './components/text-input-autocomplete/text-input-autocomplete-container.component';
 import { TextInputAutocompleteMenuComponent } from './components/text-input-autocomplete/text-input-autocomplete-menu.component';
-import {
-  FormlyValidationMessageComponent
-} from './formly-validation-message/formly-validation-message.component';
+
 
 export function requiredValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This field is required`;
@@ -93,16 +87,12 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
     FormlySelectOptionsPipe,
     FormlyWrapperFormFieldComponent,
     FormlyFieldCheckboxComponent,
-    FormlyFieldDateComponent,
     FormlyFieldInputComponent,
     FormlyFieldMultiCheckboxComponent,
     FormlyFieldRadioComponent,
     FormlyFieldSelectComponent,
     FormlyFieldSliderComponent,
-    FormlyFieldTextAreaComponent,
-    FormlyFieldTextComponent,
     FormlyFieldPasswordComponent,
-    FormlyValidationMessageComponent,
     FormlyFieldUploadComponent,
     FormlyFieldUploadPictureComponent,
     FormlyFieldUploadFileComponent,
@@ -111,7 +101,6 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
     FormlyFieldUnfoldComponent,
     FormlyFieldIPComponent,
     FormlyFieldMultipleInputComponent,
-    FormlyFieldAlertComponent,
     FormlyFieldTableComponent,
     FormlyFieldCustomComponent,
     FormlyFieldCidrComponent,
@@ -163,12 +152,12 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
         { name: 'max', message: maxValidationMessage }
       ],
       types: [
-        { name: 'checkbox', component: FormlyFieldCheckboxComponent, wrappers: ['form-field'] },
+        // { name: 'checkbox', component: FormlyFieldCheckboxComponent, wrappers: ['form-field'] },
         { name: 'date', component: FormlyFieldDateComponent, wrappers: ['form-field'] },
         { name: 'input', component: FormlyFieldInputComponent, wrappers: ['form-field'] },
         { name: 'multicheckbox', component: FormlyFieldMultiCheckboxComponent, wrappers: ['form-field'] },
         { name: 'radio', component: FormlyFieldRadioComponent, wrappers: ['form-field'] },
-        { name: 'select', component: FormlyFieldSelectComponent, wrappers: ['form-field'] },
+        // { name: 'select', component: FormlyFieldSelectComponent, wrappers: ['form-field'] },
         { name: 'table', component: FormlyFieldTableComponent, wrappers: ['form-field'] },
         { name: 'custom', component: FormlyFieldCustomComponent, wrappers: ['form-field'] },
         { name: 'slider', component: FormlyFieldSliderComponent, wrappers: ['form-field'] },

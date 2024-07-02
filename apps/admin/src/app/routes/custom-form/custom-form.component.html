@@ -1,5 +1,5 @@
 <nz-layout>
-  <nz-header> Angular Formly ❤️ NG-ZORRO </nz-header>
+  <nz-header>Angular Formly ❤️ NG-ZORRO</nz-header>
   <nz-content>
     <nz-breadcrumb>
       <nz-breadcrumb-item>Formly</nz-breadcrumb-item>
@@ -7,34 +7,24 @@
       <nz-breadcrumb-item>NG-ZORRO</nz-breadcrumb-item>
     </nz-breadcrumb>
     <div class="inner-content">
-
       <form nz-form nzLayout="vertical" [formGroup]="form">
-        <formly-form
-          [model]="model"
-          [fields]="fields"
-          [options]="options"
-          [form]="form"
-        ></formly-form>
+        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
         <button nz-button nzType="primary" (click)="onSubmit()">Submit</button>
         <button nz-button nzDanger>Reset</button>
       </form>
     </div>
   </nz-content>
 </nz-layout>
+{{ model | json }}
 
 <ng-template ngFormRef="custom_template">
-  <span style="color: red;">custom template</span>
+  <span style="color: red">custom template</span>
 </ng-template>
 
-<ng-template
-  ngFormRef="textarea"
-  let-props="props"
-  let-control="formControl"
-  let-field="field"
->
+<ng-template ngFormRef="textarea" let-props="props" let-control="formControl" let-field="field">
   <textarea
     nz-input
-    placeholder="{{ props.placeholder}}"
+    placeholder="{{ props.placeholder }}"
     [formControl]="control"
     [cols]="props.cols"
     [rows]="props.rows || 4"

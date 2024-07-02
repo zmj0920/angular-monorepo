@@ -4,11 +4,7 @@
       <nz-form-label
         class="formly-label"
         [ngStyle]="props['formlyLabelStyle']"
-        [nzTooltipTitle]="
-          props['_nzTooltipTitle']
-            ? props['_nzTooltipTitle']
-            : props['nzTooltipTitle']
-        "
+        [nzTooltipTitle]="props['_nzTooltipTitle'] ? props['_nzTooltipTitle'] : props['nzTooltipTitle']"
         [nzRequired]="props['required'] && props['hideRequiredMarker'] !== true"
         [nzFor]="id"
         [nzNoColon]="props['nzNoColon']"

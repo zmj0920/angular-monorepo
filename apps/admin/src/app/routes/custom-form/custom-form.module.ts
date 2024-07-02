@@ -6,12 +6,12 @@ import { SharedModule } from '../../shared/shared.module';
 const router = [
   {
     path: '',
-    component: CustomFormComponent,
-  },
+    component: CustomFormComponent
+  }
 ];
 
 @NgModule({
   declarations: [CustomFormComponent],
-  imports: [SharedModule, RouterModule.forChild(router)],
+  imports: [SharedModule, RouterModule.forChild(router)]
 })
 export class CustomFormModule {}

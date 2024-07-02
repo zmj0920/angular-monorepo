@@ -1,11 +1,4 @@
-import {
-  Directive,
-  Injectable,
-  Input,
-  OnInit,
-  TemplateRef,
-  inject,
-} from '@angular/core';
+import { Directive, Injectable, Input, OnInit, TemplateRef, inject } from '@angular/core';
 
 @Injectable()
 export class FormRefSourceService {
@@ -23,7 +16,7 @@ export class FormRefSourceService {
 }
 
 @Directive({
-  selector: '[ngFormRef]',
+  selector: '[ngFormRef]'
 })
 export class NgFormRefDirective implements OnInit {
   private readonly source = inject(FormRefSourceService);

@@ -1,10 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-  TemplateRef,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
 import { isTemplateRef } from 'ng-zorro-antd/core/util';
 import { FormRefSourceService } from '../ng-form-ref.directive';
@@ -28,20 +22,14 @@ export interface WrapperProps extends FormlyFieldProps {
   templateUrl: './wrapper.component.html',
   styleUrl: './wrapper.component.scss',
   preserveWhitespaces: false,
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
-export class WrapperComponent
-  extends FieldWrapper<FormlyFieldConfig<WrapperProps>>
-  implements OnInit
-{
+export class WrapperComponent extends FieldWrapper<FormlyFieldConfig<WrapperProps>> implements OnInit {
   get errorState() {
     return this.showError ? 'error' : '';
   }
 
-  constructor(
-    private dataSource: FormRefSourceService,
-    private cdr: ChangeDetectorRef
-  ) {
+  constructor(private dataSource: FormRefSourceService, private cdr: ChangeDetectorRef) {
     super();
   }
   ngOnInit(): void {
@@ -49,7 +37,7 @@ export class WrapperComponent
     if (this.props['nzTooltipIcon']) {
       this.props['_nzTooltipIcon'] = {
         type: this.props['nzTooltipIcon']?.type || 'info-circle',
-        theme: this.props['nzTooltipIcon']?.theme || 'outline',
+        theme: this.props['nzTooltipIcon']?.theme || 'outline'
       };
     }
     if (this.props['nzTooltipTitle']) {

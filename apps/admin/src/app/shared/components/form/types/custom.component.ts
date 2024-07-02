@@ -15,7 +15,7 @@ import { FormRefSourceService } from '../ng-form-ref.directive';
     >
       >
     </ng-template>
-  `,
+  `
 })
 export class FormlyFieldCustomComponent extends FieldType {
   constructor(private dataSource: FormRefSourceService) {

@@ -11,8 +11,8 @@ import { NzConfigService } from 'ng-zorro-antd/core/config';
         [nzShowIcon]="props['nzShowIcon']"
         [nzMessage]="props['nzMessage']"
         [nzDescription]="props['nzDescription']"
-      >
-      </nz-alert>
+        [formlyAttributes]="field"
+      ></nz-alert>
     </div>
   `,
   styles: [
@@ -20,8 +20,8 @@ import { NzConfigService } from 'ng-zorro-antd/core/config';
       ::ng-deep .formly-alert .ant-alert-message {
         color: rgba(0, 0, 0, 0.6);
       }
-    `,
-  ],
+    `
+  ]
 })
 export class FormlyFieldAlertComponent extends FieldType implements OnInit {
   constructor(private nzConfigService: NzConfigService) {
@@ -29,8 +29,7 @@ export class FormlyFieldAlertComponent extends FieldType implements OnInit {
   }
   ngOnInit(): void {
     if (this.props['nzShowIcon'] === undefined) {
-      this.props['nzShowIcon'] =
-        this.nzConfigService.getConfigForComponent('alert')?.nzShowIcon;
+      this.props['nzShowIcon'] = this.nzConfigService.getConfigForComponent('alert')?.nzShowIcon;
     }
     this.props['nzType'] = this.props['nzType'] || 'info';
   }

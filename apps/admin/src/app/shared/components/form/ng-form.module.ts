@@ -24,18 +24,21 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { NzFormModule } from 'ng-zorro-antd/form';
 
-import {
-  FormRefSourceService,
-  NgFormRefDirective,
-} from './ng-form-ref.directive';
+import { FormRefSourceService, NgFormRefDirective } from './ng-form-ref.directive';
 //自定义表单
 import {
   FormlyFieldAlertComponent,
   FormlyFieldCustomComponent,
   FormlyFieldDatePickerComponent,
   FormlyFieldMultiCheckboxComponent,
-  WrapperComponent,
+  FormlyFieldPasswordComponent,
+  FormlyFieldSliderComponent,
+  FormlyFieldSwitchComponent,
+  FormlyFieldTextComponent,
+  WrapperComponent
 } from './index';
+import { FormlySelectModule } from '@ngx-formly/core/select';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
 
 export function requiredValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This field is required`;
@@ -65,10 +68,15 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
     FormlyFieldAlertComponent,
     FormlyFieldDatePickerComponent,
     FormlyFieldMultiCheckboxComponent,
+    FormlyFieldSwitchComponent,
+    FormlyFieldTextComponent,
+    FormlyFieldPasswordComponent,
+    FormlyFieldSliderComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    FormlySelectModule,
     NzFormModule,
     ReactiveFormsModule,
     NzAlertModule,
@@ -91,6 +99,7 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
     NzPipesModule,
     NzIconModule,
     NzDatePickerModule,
+    NzSwitchModule,
     FormlyModule.forChild({
       // validationMessages: [
       //   { name: 'required', message: requiredValidationMessage },
@@ -103,42 +112,53 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
         {
           name: 'custom',
           component: FormlyFieldCustomComponent,
-          wrappers: ['panel'],
+          wrappers: ['panel']
         },
         {
           name: 'alert',
           component: FormlyFieldAlertComponent,
-          wrappers: ['panel'],
+          wrappers: ['panel']
         },
         {
           name: 'date-picker',
           component: FormlyFieldDatePickerComponent,
-          wrappers: ['panel'],
+          wrappers: ['panel']
         },
         {
           name: 'multicheckbox',
           component: FormlyFieldMultiCheckboxComponent,
-          wrappers: ['panel'],
+          wrappers: ['panel']
         },
+        {
+          name: 'switch',
+          component: FormlyFieldSwitchComponent,
+          wrappers: ['panel']
+        },
+        {
+          name: 'text',
+          component: FormlyFieldTextComponent,
+          wrappers: ['panel']
+        },
+        {
+          name: 'password',
+          component: FormlyFieldPasswordComponent,
+          wrappers: ['panel']
+        },
+        {
+          name: 'slider',
+          component: FormlyFieldSliderComponent,
+          wrappers: ['panel']
+        }
       ],
       wrappers: [
         {
           name: 'panel',
-          component: WrapperComponent,
-        },
-      ],
-    }),
+          component: WrapperComponent
+        }
+      ]
+    })
   ],
-  exports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NzFormModule,
-    FormlyModule,
-    NgFormRefDirective,
-  ],
-  providers: [
-    FormRefSourceService,
-  ],
+  exports: [CommonModule, FormsModule, ReactiveFormsModule, NzFormModule, FormlyModule, NgFormRefDirective],
+  providers: [FormRefSourceService]
 })
 export class NgFormModule {}

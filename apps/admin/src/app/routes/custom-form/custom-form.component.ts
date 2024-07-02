@@ -6,7 +6,7 @@ import {
   afterRender,
   booleanAttribute,
   numberAttribute,
-  output,
+  output
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -18,13 +18,13 @@ function trimString(value: string | undefined) {
 @Component({
   selector: 'app-custom-form',
   templateUrl: './custom-form.component.html',
-  styleUrl: './custom-form.component.scss',
+  styleUrl: './custom-form.component.scss'
   // standalone: true  //独立组件
 })
 export class CustomFormComponent {
   // alias别名
   onNameChange = output<string>({
-    alias: 'ngxNameChange',
+    alias: 'ngxNameChange'
   });
   // @Input({required: true}) value = 0; //必须始终具有值
   // transform 函数来在 Angular 设置输入时更改输入的值。
@@ -45,12 +45,32 @@ export class CustomFormComponent {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'msg1',
+      key: 'Alert',
       type: 'alert',
       props: {
         nzType: 'success',
-        nzMessage: 'Success Text',
+        nzMessage: 'Success Text'
+      }
+    },
+    {
+      key: 'password',
+      type: 'password',
+      templateOptions: {
+        label: 'Password',
+        placeholder: 'Password placeholder',
+        required: true,
+        nzTooltipIcon: {
+          type: 'info-circle',
+          theme: 'twotone'
+        },
+        nzTooltipTitle: 'custom_template',
+        nzExtra: '说明'
       },
+      validation: {
+        messages: {
+          required: '请输入密码'
+        }
+      }
     },
     {
       key: 'input',
@@ -61,18 +81,18 @@ export class CustomFormComponent {
         required: true,
         nzTooltipIcon: {
           type: 'info-circle',
-          theme: 'twotone',
+          theme: 'twotone'
         },
         nzTooltipTitle: 'custom_template',
         nzHasFeedback: true,
-        nzExtra: '说明',
+        nzExtra: '说明'
       },
       wrappers: ['panel'],
       validation: {
         messages: {
-          required: '请输入姓名',
-        },
-      },
+          required: '请输入姓名'
+        }
+      }
     },
     {
       key: 'number',
@@ -81,7 +101,7 @@ export class CustomFormComponent {
         label: 'number',
         placeholder: 'Input placeholder',
         type: 'number',
-        required: true,
+        required: true
       },
       // validators: {
       //   required: {
@@ -114,9 +134,9 @@ export class CustomFormComponent {
       // },
       validation: {
         messages: {
-          required: '请输入',
-        },
-      },
+          required: '请输入'
+        }
+      }
     },
     {
       key: 'textarea',
@@ -124,20 +144,21 @@ export class CustomFormComponent {
       templateOptions: {
         label: 'Textarea',
         placeholder: 'Textarea placeholder',
-        required: true,
+        required: true
       },
       validation: {
         messages: {
-          required: '请输入',
-        },
-      },
+          required: '请输入'
+        }
+      }
     },
     {
       key: 'checkbox',
       type: 'multicheckbox',
+      defaultValue: ['red'],
       templateOptions: {
         label: 'Checkbox',
-        multiple: true,
+        required: true,
         change: (f, v: any) => {
           if (v) {
             console.log(v);
@@ -145,19 +166,27 @@ export class CustomFormComponent {
         },
         options: [
           {
-            key: 'blue',
-            label: 'blue',
+            value: 'blue',
+            label: 'blue'
+            // disabled: true,
           },
           {
-            key: 'red',
+            value: 'red',
             label: 'red',
-          },
-        ],
+            nzChecked: true
+          }
+        ]
       },
+      validation: {
+        messages: {
+          required: '请输选择'
+        }
+      }
     },
     {
       key: 'select',
       type: 'select',
+      defaultValue: ['1'],
       templateOptions: {
         label: 'Select',
         placeholder: 'Select placeholder',
@@ -166,44 +195,46 @@ export class CustomFormComponent {
         options: [
           { label: 'Option 1', value: '1' },
           { label: 'Option 2', value: '2' },
-          { label: 'Option 3', value: '3' },
+          { label: 'Option 3', value: '3' }
         ],
         change: (field, e) => {
           console.log(field);
           console.log(e);
-        },
+        }
       },
       validation: {
         messages: {
-          required: '请输入选择',
-        },
-      },
+          required: '请输入选择'
+        }
+      }
     },
     {
       key: 'radio',
       type: 'radio',
+      defaultValue: '1',
       templateOptions: {
         label: 'Radio',
         required: true,
         options: [
           { label: 'Option 1', value: '1' },
-          { label: 'Option 2', value: '2' },
-        ],
+          { label: 'Option 2', value: '2' }
+        ]
       },
       validation: {
         messages: {
-          required: '请输入选择',
-        },
-      },
+          required: '请输入选择'
+        }
+      }
     },
     {
       key: 'custom',
       type: 'custom',
+      defaultValue: '1223',
       templateOptions: {
         label: 'custom',
         placeholder: 'Input placeholder',
         required: true,
-        render: 'textarea',
+        render: 'textarea'
         // [nzTooltipTitle]	配置提示信息	string | TemplateRef<void>
         // [nzExtra]	用于显示表单额外提示信息	string | TemplateRef<void>
 
@@ -217,19 +248,55 @@ export class CustomFormComponent {
       },
       validation: {
         messages: {
-          required: '请输入姓名',
-        },
-      },
+          required: '请输入姓名'
+        }
+      }
     },
     {
       key: 'date-picker',
       type: 'date-picker',
+      defaultValue: '2024-07-08T07:23:33.791Z',
       props: {
         label: 'date-picker',
         nzMode: 'week',
-        required: true,
-      },
+        required: true
+      }
     },
+    {
+      key: 'switch',
+      type: 'switch',
+      defaultValue: true,
+      props: {
+        label: 'switch',
+        required: true
+      },
+      expressionProperties: {
+        'props.disabled': '!model.input' //动态禁用
+      }
+    },
+    {
+      key: 'text',
+      type: 'text',
+      defaultValue: '12121',
+      props: {
+        label: 'text',
+        format: 'input'
+      }
+      //hideExpression: '!model.input', //动态隐藏
+    },
+    {
+      key: 'slider',
+      type: 'slider',
+      props: {
+        label: 'Slider',
+        required: true
+      },
+      validation: {
+        messages: {
+          required: '请输入范围'
+        }
+      }
+    }
   ];
 
   constructor(elementRef: ElementRef) {
