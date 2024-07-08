@@ -316,29 +316,57 @@ export class CustomFormComponent {
         }
       }
     },
-    // {
-    //   key: 'cascader',
-    //   type: 'cascader',
-    //   props: {
-    //     label: 'cascader',
-    //     required: true,
-    //     options: [
-    //       {
-    //         value: 'zhejiang',
-    //         label: 'Zhejiang'
-    //       },
-    //       {
-    //         value: 'jiangsu',
-    //         label: 'Jiangsu'
-    //       }
-    //     ]
-    //   },
-    //   validation: {
-    //     messages: {
-    //       required: '请输选择'
-    //     }
-    //   }
-    // }
+    {
+      key: 'cascader',
+      type: 'cascader',
+      props: {
+        label: 'cascader',
+        required: true,
+        options: [
+          {
+            value: 'fujian',
+            label: 'Fujian',
+            children: [
+              {
+                value: 'xiamen',
+                label: 'Xiamen',
+                isLeaf: true
+              }
+            ]
+          },
+          {
+            value: 'guangxi',
+            label: 'Guangxi',
+            children: [
+              {
+                value: 'guilin',
+                label: 'Guilin',
+                children: [
+                  {
+                    value: 'Lijiang',
+                    label: 'Li Jiang River',
+                    isLeaf: true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      validation: {
+        messages: {
+          required: '请输选择'
+        }
+      }
+    },
+    {
+      key: 'rate',
+      type: 'rate',
+      defaultValue: 3,
+      props: {
+        label: 'Rate',
+      },
+    },
   ];
 
   constructor(elementRef: ElementRef) {

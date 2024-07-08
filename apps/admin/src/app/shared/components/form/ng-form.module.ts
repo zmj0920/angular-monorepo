@@ -28,10 +28,12 @@ import { NzCascaderModule } from 'ng-zorro-antd/cascader';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzRateModule } from 'ng-zorro-antd/rate';
 
 import { FormRefSourceService, NgFormRefDirective } from './ng-form-ref.directive';
 //自定义表单
 import {
+  WrapperComponent,
   FormlyFieldAlertComponent,
   FormlyFieldCascaderComponent,
   FormlyFieldCustomComponent,
@@ -44,9 +46,8 @@ import {
   FormlyFieldSwitchComponent,
   FormlyFieldTextComponent,
   FormlyFieldTimePickerComponent,
-  WrapperComponent
+  FormlyFieldRateComponent
 } from './index';
-
 
 export function requiredValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This field is required`;
@@ -83,7 +84,8 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
     FormlyFieldRadioButtonComponent,
     FormlyFieldDateRangePickerComponent,
     FormlyFieldTimePickerComponent,
-    FormlyFieldCascaderComponent
+    FormlyFieldCascaderComponent,
+    FormlyFieldRateComponent
   ],
   imports: [
     CommonModule,
@@ -114,6 +116,7 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
     NzSwitchModule,
     NzTimePickerModule,
     NzCascaderModule,
+    NzRateModule,
     FormlyModule.forChild({
       // validationMessages: [
       //   { name: 'required', message: requiredValidationMessage },
@@ -182,6 +185,11 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
         {
           name: 'cascader',
           component: FormlyFieldCascaderComponent,
+          wrappers: ['panel']
+        },
+        {
+          name: 'rate',
+          component: FormlyFieldRateComponent,
           wrappers: ['panel']
         }
       ],

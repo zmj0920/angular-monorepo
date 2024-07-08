@@ -13,3 +13,4 @@ export * from './types/radio.component';
 export * from './types/date-range-picker.component';
 export * from './types/time-picker.component';
 export * from './types/cascader.component';
+export * from './types/rate.component';
