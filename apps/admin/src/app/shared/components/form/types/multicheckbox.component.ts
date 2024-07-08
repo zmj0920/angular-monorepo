@@ -6,10 +6,15 @@ interface CheckboxProps extends FormlyFieldProps {}
 @Component({
   selector: 'ng-formly-field-multicheckbox',
   template: `
-    <nz-checkbox-wrapper [formControl]="formControl" (nzOnChange)="change(field, $event)">
+    <nz-checkbox-wrapper
+      [formControl]="formControl"
+      [formlyAttributes]="field"
+      ngDefaultControl
+      (nzOnChange)="change(field, $event)"
+    >
       <label
         nz-checkbox
-        *ngFor="let op of $any(props.options)"
+        *ngFor="let op of props.options"
         [nzValue]="op.value"
         [nzDisabled]="op.disabled"
         [(nzChecked)]="op['nzChecked']"

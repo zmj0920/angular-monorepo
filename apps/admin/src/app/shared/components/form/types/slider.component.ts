@@ -1,6 +1,7 @@
 import { Component, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyFieldProps } from '@ngx-formly/core';
 import { NzMarks, NzSliderComponent, NzSliderShowTooltip, NzSliderValue } from 'ng-zorro-antd/slider';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 interface SliderFieldProps extends FormlyFieldProps {
   nzDisabled?: boolean;
@@ -44,35 +45,33 @@ export interface FormlySliderFieldConfig extends FormlyFieldConfig<SliderFieldPr
     <div nz-row>
       <div nz-col nzSpan="12">
         <nz-slider
-          [formControl]="formControl"
-          [formlyAttributes]="field"
+          [(ngModel)]="value"
           [nzMax]="props.nzMax || 100"
           [nzMin]="props.nzMin || 0"
-          [(ngModel)]="value"
-          [formlyAttributes]="field"
-          [nzRange]="props.nzRange"
-          [nzDefaultValue]="props.nzDefaultValue"
           [nzDisabled]="props.nzDisabled || props.disabled || formControl.disabled"
+          [nzRange]="props.nzRange || false"
+          [nzStep]="props.nzStep || 1"
+          [nzTooltipPlacement]="$any(props.nzTooltipPlacement) || 'top'"
+          [nzTooltipVisible]="props.nzTooltipVisible || 'default'"
           [nzDots]="props.nzDots"
           [nzIncluded]="props.nzIncluded"
-          [nzMax]="props.nzMax"
-          [nzMin]="props.nzMin"
-          [nzStep]="props.nzStep"
           [nzTipFormatter]="props.nzTipFormatter"
           [nzVertical]="props.nzVertical"
           [nzReverse]="props.nzReverse"
-          [nzTooltipPlacement]="$any(props.nzTooltipPlacement)"
-          [nzTooltipVisible]="props.nzTooltipVisible || 'default'"
           (nzOnAfterChange)="props.nzOnAfterChange?.($event, field)"
+          ngDefaultControl
+          (ngModelChange)="formControl.setValue(value)"
+          [nzDefaultValue]="value"
         ></nz-slider>
       </div>
       <div nz-col nzSpan="4">
         <nz-input-number
+          [formControl]="formControl"
+          [formlyAttributes]="field"
           [nzMax]="props.nzMax || 100"
           [nzMin]="props.nzMin || 0"
-          [nzStep]="props.nzStep"
+          [nzStep]="props.nzStep || 1"
           [ngStyle]="{ marginLeft: '16px' }"
-          [(ngModel)]="value"
           [nzDisabled]="props.nzDisabled || props.disabled || formControl.disabled"
         ></nz-input-number>
       </div>
@@ -82,4 +81,21 @@ export interface FormlySliderFieldConfig extends FormlyFieldConfig<SliderFieldPr
 })
 export class FormlyFieldSliderComponent extends FieldType<FieldTypeConfig<SliderFieldProps>> {
   value!: number;
+  onDestroy$ = new Subject<void>();
+  ngOnInit() {
+    this.value = this.formControl.value || this.props.nzMin || 0;
+    this.formControl.valueChanges
+      .pipe(
+        takeUntil(this.onDestroy$),
+        tap(val => {
+          this.value = val;
+          this.formControl.markAsDirty();
+        })
+      )
+      .subscribe();
+  }
+  ngOnDestroy() {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
 }

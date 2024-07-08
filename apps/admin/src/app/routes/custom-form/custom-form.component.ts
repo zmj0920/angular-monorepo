@@ -210,7 +210,7 @@ export class CustomFormComponent {
     },
     {
       key: 'radio',
-      type: 'radio',
+      type: 'radio-button', // radio-button
       defaultValue: '1',
       templateOptions: {
         label: 'Radio',
@@ -255,10 +255,28 @@ export class CustomFormComponent {
     {
       key: 'date-picker',
       type: 'date-picker',
-      defaultValue: '2024-07-08T07:23:33.791Z',
+      // defaultValue: '2024-07-08T07:23:33.791Z',
       props: {
         label: 'date-picker',
-        nzMode: 'week',
+        // nzMode: 'week',
+        required: true
+      }
+    },
+    {
+      key: 'date-range-picker',
+      type: 'date-range-picker',
+      props: {
+        label: 'date-range-picker',
+        // nzMode: 'week',
+        required: true
+      }
+    },
+    {
+      key: 'time-picker',
+      type: 'time-picker',
+      props: {
+        label: 'time-picker',
+        // nzMode: 'week',
         required: true
       }
     },
@@ -287,6 +305,7 @@ export class CustomFormComponent {
     {
       key: 'slider',
       type: 'slider',
+      defaultValue: 3,
       props: {
         label: 'Slider',
         required: true
@@ -296,7 +315,30 @@ export class CustomFormComponent {
           required: '请输入范围'
         }
       }
-    }
+    },
+    // {
+    //   key: 'cascader',
+    //   type: 'cascader',
+    //   props: {
+    //     label: 'cascader',
+    //     required: true,
+    //     options: [
+    //       {
+    //         value: 'zhejiang',
+    //         label: 'Zhejiang'
+    //       },
+    //       {
+    //         value: 'jiangsu',
+    //         label: 'Jiangsu'
+    //       }
+    //     ]
+    //   },
+    //   validation: {
+    //     messages: {
+    //       required: '请输选择'
+    //     }
+    //   }
+    // }
   ];
 
   constructor(elementRef: ElementRef) {

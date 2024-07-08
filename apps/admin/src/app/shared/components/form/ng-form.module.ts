@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlySelectModule } from '@ngx-formly/core/select';
+
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -21,24 +24,29 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzPipesModule } from 'ng-zorro-antd/pipes';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { NzCascaderModule } from 'ng-zorro-antd/cascader';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzFormModule } from 'ng-zorro-antd/form';
 
 import { FormRefSourceService, NgFormRefDirective } from './ng-form-ref.directive';
 //自定义表单
 import {
   FormlyFieldAlertComponent,
+  FormlyFieldCascaderComponent,
   FormlyFieldCustomComponent,
   FormlyFieldDatePickerComponent,
+  FormlyFieldDateRangePickerComponent,
   FormlyFieldMultiCheckboxComponent,
   FormlyFieldPasswordComponent,
+  FormlyFieldRadioButtonComponent,
   FormlyFieldSliderComponent,
   FormlyFieldSwitchComponent,
   FormlyFieldTextComponent,
+  FormlyFieldTimePickerComponent,
   WrapperComponent
 } from './index';
-import { FormlySelectModule } from '@ngx-formly/core/select';
-import { NzSwitchModule } from 'ng-zorro-antd/switch';
+
 
 export function requiredValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This field is required`;
@@ -71,7 +79,11 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
     FormlyFieldSwitchComponent,
     FormlyFieldTextComponent,
     FormlyFieldPasswordComponent,
-    FormlyFieldSliderComponent
+    FormlyFieldSliderComponent,
+    FormlyFieldRadioButtonComponent,
+    FormlyFieldDateRangePickerComponent,
+    FormlyFieldTimePickerComponent,
+    FormlyFieldCascaderComponent
   ],
   imports: [
     CommonModule,
@@ -100,6 +112,8 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
     NzIconModule,
     NzDatePickerModule,
     NzSwitchModule,
+    NzTimePickerModule,
+    NzCascaderModule,
     FormlyModule.forChild({
       // validationMessages: [
       //   { name: 'required', message: requiredValidationMessage },
@@ -125,6 +139,17 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
           wrappers: ['panel']
         },
         {
+          name: 'date-range-picker',
+          component: FormlyFieldDateRangePickerComponent,
+          wrappers: ['panel']
+        },
+        {
+          name: 'time-picker',
+          component: FormlyFieldTimePickerComponent,
+          wrappers: ['panel']
+        },
+
+        {
           name: 'multicheckbox',
           component: FormlyFieldMultiCheckboxComponent,
           wrappers: ['panel']
@@ -147,6 +172,16 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
         {
           name: 'slider',
           component: FormlyFieldSliderComponent,
+          wrappers: ['panel']
+        },
+        {
+          name: 'radio-button',
+          component: FormlyFieldRadioButtonComponent,
+          wrappers: ['panel']
+        },
+        {
+          name: 'cascader',
+          component: FormlyFieldCascaderComponent,
           wrappers: ['panel']
         }
       ],

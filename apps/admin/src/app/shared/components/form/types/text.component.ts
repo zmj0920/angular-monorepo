@@ -1,5 +1,6 @@
 import { Component, Type } from '@angular/core';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyFieldProps } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldProps } from '@ngx-formly/ng-zorro-antd/form-field';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 interface TextFieldProps extends FormlyFieldProps {

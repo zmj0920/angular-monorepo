@@ -44,9 +44,9 @@ registerLocaleData(zh);
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    // RouterModule,
     ReactiveFormsModule,
     NgFormModule,
+
     ...SHARED_ZORRO_MODULES,
     // third libs
     ...THIRDMODULES,
