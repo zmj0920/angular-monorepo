@@ -30,7 +30,7 @@ import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 
-import { FormRefSourceService, NgFormRefDirective } from './ng-form-ref.directive';
+import { FormRefSourceService, NgFormRefDirective } from '@angular-monorepo/ng-form';
 //自定义表单
 import {
   WrapperComponent,

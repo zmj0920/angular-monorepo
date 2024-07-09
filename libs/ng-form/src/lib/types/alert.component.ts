@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyFieldProps } from '@ngx-formly/core';
 import { NzConfigService } from 'ng-zorro-antd/core/config';
-import { FormRefSourceService } from '../ng-form-ref.directive';
+import { FormRefSourceService } from '@angular-monorepo/ng-form';
 import { isTemplateRef } from 'ng-zorro-antd/core/util';
 
 interface AlertProps extends FormlyFieldProps {
@@ -21,7 +21,7 @@ interface AlertProps extends FormlyFieldProps {
   nzOnClose?: (evt: boolean) => void;
 }
 
-export interface FormlyRateFieldConfig extends FormlyFieldConfig<AlertProps> {
+export interface FormlyAlertFieldConfig extends FormlyFieldConfig<AlertProps> {
   type: 'alert' | Type<FormlyFieldAlertComponent>;
 }
 @Component({

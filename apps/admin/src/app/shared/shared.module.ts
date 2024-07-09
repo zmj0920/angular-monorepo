@@ -13,9 +13,9 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { SHARED_SERVICE } from './shared-service.module';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
-import { NgFormModule } from './components/form/ng-form.module';
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 import zh from '@angular/common/locales/zh';
+import { NgFormModule } from '@angular-monorepo/ng-form';
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;

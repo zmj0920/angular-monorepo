@@ -76,7 +76,7 @@ export class FormlyWrapperFormFieldComponent extends FieldWrapper implements OnI
     }
 
     if (this.props['popoverContentRender']) {
-      const content = this.dataSource.getRender(this.props['popoverContentRender');
+      const content = this.dataSource.getRender(this.props['popoverContentRender']);
       if (content) {
         this.props['popoverContentType'] = 'TemplateRef';
         this.props['popoverContent'] = content;

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
-import { FormRefSourceService } from '../ng-form-ref.directive';
+import { FormRefSourceService } from '@angular-monorepo/ng-form';
 
 @Component({
   selector: 'ng-formly-field-custom',

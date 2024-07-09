@@ -1,4 +1,4 @@
-export * from './ng-form-ref.directive';
+export * from './directive/ng-form-ref.directive';
 
 export * from './wrapper/wrapper.component';
 export * from './types/custom.component';

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyFieldProps } from '@ngx-formly/core';
-import { NzMarks, NzSliderComponent, NzSliderShowTooltip, NzSliderValue } from 'ng-zorro-antd/slider';
+import { NzMarks, NzSliderShowTooltip, NzSliderValue } from 'ng-zorro-antd/slider';
 import { Subject, takeUntil, tap } from 'rxjs';
 
 interface SliderFieldProps extends FormlyFieldProps {

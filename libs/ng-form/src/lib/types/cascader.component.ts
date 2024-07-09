@@ -3,7 +3,7 @@ import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core'
 import { FormlyFieldProps } from '@ngx-formly/ng-zorro-antd/form-field';
 import { NzCascaderOption, NzShowSearchOptions } from 'ng-zorro-antd/cascader';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
-import { FormRefSourceService } from '../ng-form-ref.directive';
+import { FormRefSourceService } from '@angular-monorepo/ng-form';
 import { isTemplateRef } from 'ng-zorro-antd/core/util';
 
 interface CascaderProps extends FormlyFieldProps {

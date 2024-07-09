@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, TemplateRef, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldProps } from '@ngx-formly/ng-zorro-antd/form-field';
-import { FunctionProp, NzSafeAny, NzStatus } from 'ng-zorro-antd/core/types';
+import { NzSafeAny, NzStatus } from 'ng-zorro-antd/core/types';
 import {
   CompatibleDate,
   DisabledTimeFn,
@@ -10,10 +10,11 @@ import {
   PresetRanges,
   SupportTimeOptions
 } from 'ng-zorro-antd/date-picker';
-import { FormRefSourceService } from '../ng-form-ref.directive';
+import { NzPlacement } from 'ng-zorro-antd/date-picker/date-picker.component';
+import { FormRefSourceService } from '@angular-monorepo/ng-form';
 import { isTemplateRef } from 'ng-zorro-antd/core/util';
 
-interface DateRangePickerProps extends FormlyFieldProps {
+interface DateProps extends FormlyFieldProps {
   nzMode: NzDateMode;
   nzAutoFocus: boolean;
   nzDisabled: boolean;
@@ -29,7 +30,6 @@ interface DateRangePickerProps extends FormlyFieldProps {
   nzDropdownClassName: string;
   nzSize: NzDatePickerSizeType;
   placeholder: string;
-  nzSuffixIcon: string;
   nzShowTime?: SupportTimeOptions | boolean;
   nzShowToday: boolean;
   nzShowNow: boolean;
@@ -38,69 +38,66 @@ interface DateRangePickerProps extends FormlyFieldProps {
   nzOnOpenChange?: (open: boolean) => void;
   nzStatus: NzStatus;
   nzRanges?: PresetRanges;
-  nzOnCalendarChange?: (evt: (Date | null)[]) => void;
+  nzPlacement: NzPlacement;
   nzDefaultPickerValue?: CompatibleDate | null;
-  nzSeparator?: string;
-  _nzSeparator?: string | TemplateRef<NzSafeAny>;
+  nzSuffixIcon?: string;
+  _nzSuffixIcon?: string | TemplateRef<NzSafeAny>;
   nzDateRender?: string;
   _nzDateRender?: string | TemplateRef<NzSafeAny> | undefined;
   nzRenderExtraFooter?: string;
   _nzRenderExtraFooter?: string | TemplateRef<NzSafeAny> | undefined;
 }
 
-export interface FormlyDateRangePickerFieldConfig extends FormlyFieldConfig<DateRangePickerProps> {
-  type: 'date-range-picker' | Type<FormlyFieldDateRangePickerComponent>;
+export interface FormlyDatePickerFieldConfig extends FormlyFieldConfig<DateProps> {
+  type: 'date' | Type<FormlyFieldDatePickerComponent>;
 }
 
 @Component({
-  selector: 'nz-formly-date-range-picker',
+  selector: 'ng-formly-field-date-picker',
   template: `
-    <nz-range-picker
+    <nz-date-picker
       style="width: 100%"
       [formControl]="formControl"
       [formlyAttributes]="field"
-      [nzMode]="props.nzMode"
+      [nzMode]="props.nzMode || 'date'"
       [nzAllowClear]="props.nzAllowClear"
       [nzAutoFocus]="props.nzAutoFocus"
       [nzBackdrop]="props.nzBackdrop"
-      [nzDisabled]="props.nzDisabled || props.disabled || formControl.disabled"
-      [nzDisabledDate]="props.nzDisabledDate"
       [nzPopupStyle]="props.nzPopupStyle"
-      [nzDropdownClassName]="props.nzDropdownClassName"
       [nzSize]="props.nzSize"
-      [nzFormat]="props.nzFormat"
-      [nzInputReadOnly]="props.nzInputReadOnly"
-      [nzPlaceHolder]="props.nzPlaceHolder || props.placeholder"
+      [nzDisabled]="props.nzDisabled || props.disabled || formControl.disabled"
       [nzBorderless]="props.nzBorderless"
-      [nzSuffixIcon]="props.nzSuffixIcon"
+      [nzPlaceHolder]="props.nzPlaceHolder || props.placeholder"
       [nzInline]="props.nzInline"
-      (nzOnOpenChange)="props.nzOnOpenChange && props.nzOnOpenChange($event)"
       [nzStatus]="props.nzStatus"
+      [nzShowTime]="props.nzShowTime"
       [nzShowToday]="props.nzShowToday"
       [nzShowNow]="props.nzShowNow"
-      [nzDefaultPickerValue]="props.nzDefaultPickerValue || null"
-      (nzOnOpenChange)="props.nzOnOpenChange && props.nzOnOpenChange($event)"
-      [nzRanges]="props.nzRanges"
+      [nzPlacement]="props.nzPlacement || 'bottomLeft'"
       (nzOnOk)="props.nzOnOk && props.nzOnOk($event)"
-      (nzOnCalendarChange)="props.nzOnCalendarChange && props.nzOnCalendarChange($event)"
-      [nzShowTime]="props.nzShowTime"
+      (nzOnOpenChange)="props.nzOnOpenChange && props.nzOnOpenChange($event)"
+      [nzDisabledDate]="props.nzDisabledDate"
+      [nzDropdownClassName]="props.nzDropdownClassName"
+      [nzFormat]="props.nzFormat"
+      [nzInputReadOnly]="props.nzInputReadOnly"
       [nzDisabledTime]="props.nzDisabledTime"
-      [nzDateRender]="props._nzDateRender"
-      [nzSeparator]="props._nzSeparator || '~'"
+      [nzDefaultPickerValue]="props.nzDefaultPickerValue || null"
+      [nzRanges]="(props.nzRanges && props.nzRanges) || undefined"
       [nzRenderExtraFooter]="props._nzRenderExtraFooter"
-      ngDefaultControl
-    ></nz-range-picker>
+      [nzDateRender]="props._nzDateRender"
+      [nzSuffixIcon]="props._nzSuffixIcon || ''"
+    ></nz-date-picker>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormlyFieldDateRangePickerComponent extends FieldType<FieldTypeConfig<DateRangePickerProps>> {
+export class FormlyFieldDatePickerComponent extends FieldType<FieldTypeConfig<DateProps>> {
   constructor(private dataSource: FormRefSourceService) {
     super();
   }
   ngOnInit(): void {
-    if (this.props['nzSeparator']) {
-      const nzSeparator = this.getTemplate(this.props.nzSeparator);
-      this.props['_nzSeparator'] = isTemplateRef(nzSeparator) ? nzSeparator : this.props.nzSeparator;
+    if (this.props['nzSuffixIcon']) {
+      const nzSuffixIcon = this.getTemplate(this.props.nzSuffixIcon);
+      this.props['_nzSuffixIcon'] = isTemplateRef(nzSuffixIcon) ? nzSuffixIcon : this.props.nzSuffixIcon;
     }
     if (this.props['nzRenderExtraFooter']) {
       const nzRenderExtraFooter = this.getTemplate(this.props.nzRenderExtraFooter);
