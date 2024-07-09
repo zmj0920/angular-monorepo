@@ -1,7 +1,9 @@
-import { Component, TemplateRef, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, TemplateRef, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldProps } from '@ngx-formly/ng-zorro-antd/form-field';
-import { NzSizeDSType } from 'ng-zorro-antd/core/types';
+import { FormRefSourceService } from '../ng-form-ref.directive';
+import { isTemplateRef } from 'ng-zorro-antd/core/util';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 interface RateProps extends FormlyFieldProps {
   nzAllowClear?: boolean;
@@ -11,32 +13,30 @@ interface RateProps extends FormlyFieldProps {
   nzCount?: number;
   nzDisabled?: boolean;
   nzTooltips?: string[];
-  nzCharacter: TemplateRef<{
-    $implicit: number;
-  }>;
   nzOnBlur?: (evt: FocusEvent) => void;
   nzOnFocus?: (evt: FocusEvent) => void;
   nzOnHoverChange?: (evt: number) => void;
   nzOnKeyDown?: (evt: KeyboardEvent) => void;
+  nzCharacter: string;
+  _nzCharacter?: TemplateRef<NzSafeAny>;
 }
 
 export interface FormlyRateFieldConfig extends FormlyFieldConfig<RateProps> {
   type: 'rate' | Type<FormlyFieldRateComponent>;
 }
 
-// [nzCount]="props.nzCount || 0"
 @Component({
   selector: 'ng-formly-field-rate',
   template: `
     <nz-rate
-      [formControl]="$any(formControl)"
+      [formControl]="formControl"
       [formlyAttributes]="field"
       [nzDisabled]="props.nzDisabled || props.disabled || formControl.disabled"
       [nzTooltips]="props.nzTooltips || []"
       [nzAllowClear]="props.nzAllowClear !== false"
       [nzAllowHalf]="props.nzAllowHalf"
       [nzAutoFocus]="props.nzAutoFocus"
-      [nzCharacter]="props.nzCharacter"
+      [nzCharacter]="props._nzCharacter || nzCharacter"
       [nzCount]="props.nzCount || 5"
       (nzOnKeyDown)="props.nzOnKeyDown?.($event)"
       (nzOnFocus)="props.nzOnFocus?.($event)"
@@ -44,9 +44,24 @@ export interface FormlyRateFieldConfig extends FormlyFieldConfig<RateProps> {
       (nzOnHoverChange)="props.nzOnHoverChange?.($event)"
       ngDefaultControl
     ></nz-rate>
-    <!-- <nz-rate [formControl]="formControl" [formlyAttributes]="field" [ngModel]="value"></nz-rate> -->
-  `
+    <ng-template #nzCharacter>
+      <span nz-icon nzType="star"></span>
+    </ng-template>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormlyFieldRateComponent extends FieldType<FieldTypeConfig<RateProps>> {
-  value = 0;
+  constructor(private dataSource: FormRefSourceService) {
+    super();
+  }
+  ngOnInit(): void {
+    if (this.props['nzCharacter']) {
+      const nzCharacter = this.getTemplate(this.props.nzCharacter);
+      this.props['_nzCharacter'] = isTemplateRef(nzCharacter) ? nzCharacter : undefined;
+    }
+  }
+
+  getTemplate(key: string) {
+    return this.dataSource.getRender(key);
+  }
 }

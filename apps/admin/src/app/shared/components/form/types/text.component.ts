@@ -1,4 +1,4 @@
-import { Component, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldProps } from '@ngx-formly/ng-zorro-antd/form-field';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
@@ -36,7 +36,8 @@ export interface FormlyTextFieldConfig extends FormlyFieldConfig<TextFieldProps>
         word-break: break-all;
       }
     `
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormlyFieldTextComponent extends FieldType<FieldTypeConfig<TextFieldProps>> {
   get text() {

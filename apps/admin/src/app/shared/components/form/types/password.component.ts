@@ -1,4 +1,4 @@
-import { Component, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldProps } from '@ngx-formly/ng-zorro-antd/form-field';
 interface PasswordFieldProps extends FormlyFieldProps {}
@@ -33,7 +33,8 @@ export interface FormlyPasswordFieldConfig extends FormlyFieldConfig<PasswordFie
         cursor: pointer;
       }
     `
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormlyFieldPasswordComponent extends FieldType<FieldTypeConfig<PasswordFieldProps>> {
   passwordVisible = false;

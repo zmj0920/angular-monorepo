@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { FormRefSourceService } from '../ng-form-ref.directive';
 
@@ -15,7 +15,8 @@ import { FormRefSourceService } from '../ng-form-ref.directive';
     >
       >
     </ng-template>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormlyFieldCustomComponent extends FieldType {
   constructor(private dataSource: FormRefSourceService) {

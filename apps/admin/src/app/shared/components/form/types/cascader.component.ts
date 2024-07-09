@@ -3,6 +3,8 @@ import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core'
 import { FormlyFieldProps } from '@ngx-formly/ng-zorro-antd/form-field';
 import { NzCascaderOption, NzShowSearchOptions } from 'ng-zorro-antd/cascader';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
+import { FormRefSourceService } from '../ng-form-ref.directive';
+import { isTemplateRef } from 'ng-zorro-antd/core/util';
 
 interface CascaderProps extends FormlyFieldProps {
   nzAllowClear?: boolean;
@@ -12,38 +14,40 @@ interface CascaderProps extends FormlyFieldProps {
   nzChangeOnSelect?: boolean;
   nzColumnClassName?: string;
   nzDisabled?: boolean;
-  nzExpandIcon?: string | TemplateRef<NzSafeAny>;
   nzExpandIconName?: string;
   nzExpandTrigger?: 'click' | 'hover';
   nzLabelProperty?: string;
-  nzLabelRender?: TemplateRef<any>;
   nzLabelRenderName?: string;
   nzLoadData?: (option: any, index?: number) => PromiseLike<any>;
   nzMenuClassName?: string;
   nzMenuStyle?: object;
-  nzNotFoundContent?: string | TemplateRef<NzSafeAny>;
   nzNotFoundContentName?: string;
-  nzOptionRender?: TemplateRef<{ $implicit: NzCascaderOption; index: number }>;
   nzOptionRenderName?: string;
   nzPlaceHolder?: string;
   nzShowArrow?: boolean;
   nzShowInput?: boolean;
   nzShowSearch?: boolean | NzShowSearchOptions;
   nzSize?: 'large' | 'small' | 'default';
-  nzSuffixIcon?: string | TemplateRef<NzSafeAny>;
   nzSuffixIconName?: string;
   nzValueProperty?: string;
   nzClear?: (field: FormlyFieldConfig) => void;
   nzVisibleChange?: (evt: boolean) => void;
   nzSelectionChange?: (evt: NzCascaderOption[]) => void;
+  nzLabelRender?: string;
+  _nzLabelRender?: TemplateRef<NzSafeAny>;
+  nzExpandIcon?: string;
+  _nzExpandIcon?: string | TemplateRef<NzSafeAny>;
+  nzSuffixIcon?: string;
+  _nzSuffixIcon?: string | TemplateRef<NzSafeAny>;
+  nzOptionRender?: string;
+  _nzOptionRender?: TemplateRef<NzSafeAny>;
+  nzNotFoundContent?: string;
+  _nzNotFoundContent?: string | TemplateRef<NzSafeAny>;
 }
 
 export interface FormlyCascaderConfig extends FormlyFieldConfig<CascaderProps> {
   type: 'cascader' | Type<FormlyFieldCascaderComponent>;
 }
-
-// [nzShowInput]="props.nzShowInput"
-
 @Component({
   selector: 'nz-formly-cascader',
   template: `
@@ -54,8 +58,7 @@ export interface FormlyCascaderConfig extends FormlyFieldConfig<CascaderProps> {
       [nzAllowClear]="props.nzAllowClear"
       [nzBackdrop]="props.nzBackdrop || false"
       [nzChangeOn]="props.nzChangeOn"
-      [nzExpandIcon]="props.nzExpandIcon || ''"
-      [nzLabelRender]="props.nzLabelRender || null"
+      [nzShowInput]="props.nzShowInput || true"
       [nzLoadData]="props.nzLoadData"
       [nzLabelProperty]="props.nzLabelProperty || 'label'"
       [nzPlaceHolder]="props.nzPlaceHolder || props.placeholder || 'Please select'"
@@ -64,7 +67,6 @@ export interface FormlyCascaderConfig extends FormlyFieldConfig<CascaderProps> {
       [nzDisabled]="props.nzDisabled || props.disabled || formControl.disabled"
       [nzExpandTrigger]="props.nzExpandTrigger || 'click'"
       [nzShowArrow]="props.nzShowArrow"
-      [nzSuffixIcon]="props.nzSuffixIcon || ''"
       [nzChangeOnSelect]="props.nzChangeOnSelect"
       [nzColumnClassName]="props.nzColumnClassName"
       [nzAutoFocus]="props.nzAutoFocus"
@@ -74,11 +76,46 @@ export interface FormlyCascaderConfig extends FormlyFieldConfig<CascaderProps> {
       (nzClear)="props.nzClear?.(field)"
       (nzSelectionChange)="props.nzSelectionChange?.($event)"
       (nzVisibleChange)="props.nzVisibleChange?.($event)"
-      [nzNotFoundContent]="props.nzNotFoundContent"
-      [nzOptionRender]="props.nzOptionRender || null"
-      [nzShowInput]="props.nzShowInput || true"
+      [nzSuffixIcon]="props._nzSuffixIcon || ''"
+      [nzExpandIcon]="props._nzExpandIcon || ''"
+      [nzNotFoundContent]="props._nzNotFoundContent"
+      [nzLabelRender]="props._nzLabelRender || null"
+      [nzOptionRender]="props._nzOptionRender || null"
     ></nz-cascader>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormlyFieldCascaderComponent extends FieldType<FieldTypeConfig<CascaderProps>> {}
+export class FormlyFieldCascaderComponent extends FieldType<FieldTypeConfig<CascaderProps>> {
+  constructor(private dataSource: FormRefSourceService) {
+    super();
+  }
+
+  ngOnInit(): void {
+    if (this.props['nzSuffixIcon']) {
+      const nzSuffixIcon = this.getTemplate(this.props.nzSuffixIcon);
+      this.props['_nzSuffixIcon'] = isTemplateRef(nzSuffixIcon) ? nzSuffixIcon : this.props.nzSuffixIcon;
+    }
+    if (this.props['nzExpandIcon']) {
+      const nzExpandIcon = this.getTemplate(this.props.nzExpandIcon);
+      this.props['_nzExpandIcon'] = isTemplateRef(nzExpandIcon) ? nzExpandIcon : this.props.nzExpandIcon;
+    }
+    if (this.props['nzNotFoundContent']) {
+      const nzNotFoundContent = this.getTemplate(this.props.nzNotFoundContent);
+      this.props['_nzNotFoundContent'] = isTemplateRef(nzNotFoundContent)
+        ? nzNotFoundContent
+        : this.props.nzNotFoundContent;
+    }
+    if (this.props['nzLabelRender']) {
+      const nzLabelRender = this.getTemplate(this.props.nzLabelRender);
+      this.props['_nzLabelRender'] = isTemplateRef(nzLabelRender) ? nzLabelRender : undefined;
+    }
+    if (this.props['nzOptionRender']) {
+      const nzOptionRender = this.getTemplate(this.props.nzOptionRender);
+      this.props['_nzOptionRender'] = isTemplateRef(nzOptionRender) ? nzOptionRender : undefined;
+    }
+  }
+
+  getTemplate(key: string) {
+    return this.dataSource.getRender(key);
+  }
+}

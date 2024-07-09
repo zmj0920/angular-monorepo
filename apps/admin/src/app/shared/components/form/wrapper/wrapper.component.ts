@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
 import { isTemplateRef } from 'ng-zorro-antd/core/util';
 import { FormRefSourceService } from '../ng-form-ref.directive';
@@ -22,14 +22,15 @@ export interface WrapperProps extends FormlyFieldProps {
   templateUrl: './wrapper.component.html',
   styleUrl: './wrapper.component.scss',
   preserveWhitespaces: false,
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WrapperComponent extends FieldWrapper<FormlyFieldConfig<WrapperProps>> implements OnInit {
   get errorState() {
     return this.showError ? 'error' : '';
   }
 
-  constructor(private dataSource: FormRefSourceService, private cdr: ChangeDetectorRef) {
+  constructor(private dataSource: FormRefSourceService) {
     super();
   }
   ngOnInit(): void {
