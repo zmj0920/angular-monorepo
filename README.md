@@ -66,16 +66,18 @@ npx create-nx-workspace angular-monorepo --preset=angular-monorepo
 
 在项目中创建
 
-npx nx g @nx/angular:component my-component
+// project
+nx g @nx/angular:app appName
+// lib
+nx g @nx/angular:lib libName
+// service
+nx g @nx/angular:service my-service
+// module
+nx g @nx/angular:module angular-demo
+// component
+nx g @nx/angular:component my-component
 
 npx nx g @schematics/angular:component my-component
-
-nx g @nx/angular:service my-service
-
-
-nx g @nx/angular:app appName
-
-nx g @nx/angular:lib libName
 
 nx serve admin --port 4201
 

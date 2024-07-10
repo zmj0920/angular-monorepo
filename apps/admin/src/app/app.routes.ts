@@ -8,5 +8,12 @@ export const appRoutes: Route[] = [
         (_) => _.CustomFormModule
       ),
   },
+  {
+    path: 'demo',
+    loadChildren: () =>
+      import('./routes/angular-demo/angular-demo.module').then(
+        (_) => _.AngularDemoModule
+      ),
+  },
   { path: '**', redirectTo: '' },
 ];

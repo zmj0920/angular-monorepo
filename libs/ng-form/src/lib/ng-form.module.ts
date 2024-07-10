@@ -48,6 +48,7 @@ import {
   FormlyFieldTimePickerComponent,
   FormlyFieldRateComponent
 } from './index';
+import { IpValidator } from './utils/validator';
 
 export function requiredValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This field is required`;
@@ -68,6 +69,7 @@ export function minValidationMessage(err: any, field: FormlyFieldConfig) {
 export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This value should be less than ${field.templateOptions?.max}`;
 }
+
 
 @NgModule({
   declarations: [
@@ -118,13 +120,16 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
     NzCascaderModule,
     NzRateModule,
     FormlyModule.forChild({
-      // validationMessages: [
-      //   { name: 'required', message: requiredValidationMessage },
-      //   { name: 'minlength', message: minlengthValidationMessage },
-      //   { name: 'maxlength', message: maxlengthValidationMessage },
-      //   { name: 'min', message: minValidationMessage },
-      //   { name: 'max', message: maxValidationMessage },
-      // ],
+      validators: [
+        { name: 'ip', validation: IpValidator },
+      ],
+      validationMessages: [
+        { name: 'required', message: requiredValidationMessage },
+        { name: 'minlength', message: minlengthValidationMessage },
+        { name: 'maxlength', message: maxlengthValidationMessage },
+        { name: 'min', message: minValidationMessage },
+        { name: 'max', message: maxValidationMessage },
+      ],
       types: [
         {
           name: 'custom',
