@@ -46,9 +46,11 @@ import {
   FormlyFieldSwitchComponent,
   FormlyFieldTextComponent,
   FormlyFieldTimePickerComponent,
-  FormlyFieldRateComponent
+  FormlyFieldRateComponent,
+  FormlyFieldTreeSelectComponent
 } from './index';
 import { IpValidator } from './utils/validator';
+import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 
 export function requiredValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This field is required`;
@@ -70,7 +72,6 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
   return `This value should be less than ${field.templateOptions?.max}`;
 }
 
-
 @NgModule({
   declarations: [
     NgFormRefDirective,
@@ -87,7 +88,8 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
     FormlyFieldDateRangePickerComponent,
     FormlyFieldTimePickerComponent,
     FormlyFieldCascaderComponent,
-    FormlyFieldRateComponent
+    FormlyFieldRateComponent,
+    FormlyFieldTreeSelectComponent
   ],
   imports: [
     CommonModule,
@@ -119,16 +121,15 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
     NzTimePickerModule,
     NzCascaderModule,
     NzRateModule,
+    NzTreeSelectModule,
     FormlyModule.forChild({
-      validators: [
-        { name: 'ip', validation: IpValidator },
-      ],
+      validators: [{ name: 'ip', validation: IpValidator }],
       validationMessages: [
         { name: 'required', message: requiredValidationMessage },
         { name: 'minlength', message: minlengthValidationMessage },
         { name: 'maxlength', message: maxlengthValidationMessage },
         { name: 'min', message: minValidationMessage },
-        { name: 'max', message: maxValidationMessage },
+        { name: 'max', message: maxValidationMessage }
       ],
       types: [
         {
@@ -195,6 +196,11 @@ export function maxValidationMessage(err: any, field: FormlyFieldConfig) {
         {
           name: 'rate',
           component: FormlyFieldRateComponent,
+          wrappers: ['panel']
+        },
+        {
+          name: 'tree-select',
+          component: FormlyFieldTreeSelectComponent,
           wrappers: ['panel']
         }
       ],

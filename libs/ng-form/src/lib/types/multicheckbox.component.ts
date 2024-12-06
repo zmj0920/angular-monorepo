@@ -1,8 +1,16 @@
 import { ChangeDetectionStrategy, Component, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldProps } from '@ngx-formly/ng-zorro-antd/form-field';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
-interface CheckboxProps extends FormlyFieldProps {}
+interface CheckboxProps extends FormlyFieldProps {
+  options: Array<{
+    label: string;
+    value: string | number | null | undefined;
+    disabled: boolean;
+    nzChecked: boolean;
+  }>;
+}
 
 export interface FormlyMultiCheckboxFieldConfig extends FormlyFieldConfig<CheckboxProps> {
   type: 'multicheckbox' | Type<FormlyFieldMultiCheckboxComponent>;
@@ -21,7 +29,7 @@ export interface FormlyMultiCheckboxFieldConfig extends FormlyFieldConfig<Checkb
         *ngFor="let op of props.options"
         [nzValue]="op.value"
         [nzDisabled]="op.disabled"
-        [(nzChecked)]="op['nzChecked']"
+        [(nzChecked)]="op.nzChecked"
       >
         {{ op.label }}
       </label>
@@ -30,7 +38,7 @@ export interface FormlyMultiCheckboxFieldConfig extends FormlyFieldConfig<Checkb
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormlyFieldMultiCheckboxComponent extends FieldType<FieldTypeConfig<CheckboxProps>> {
-  change(field: any, options: any) {
+  change(field: NzSafeAny, options: NzSafeAny) {
     this.formControl.patchValue(options);
     if (this.props.change) {
       this.props.change(field, options);

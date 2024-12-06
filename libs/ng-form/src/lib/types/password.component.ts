@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldProps } from '@ngx-formly/ng-zorro-antd/form-field';
-interface PasswordFieldProps extends FormlyFieldProps {}
+interface PasswordFieldProps extends FormlyFieldProps {
+  nzPlaceHolder: string | undefined;
+}
 
 export interface FormlyPasswordFieldConfig extends FormlyFieldConfig<PasswordFieldProps> {
   type: 'password' | Type<FormlyFieldPasswordComponent>;
@@ -12,11 +14,11 @@ export interface FormlyPasswordFieldConfig extends FormlyFieldConfig<PasswordFie
   template: `
     <nz-input-group [nzSuffix]="suffixTemplate">
       <input
+        nz-input
         [formlyAttributes]="field"
         [formControl]="formControl"
         [type]="passwordVisible ? 'text' : 'password'"
-        nz-input
-        placeholder="input password"
+        [placeholder]="props.nzPlaceHolder || props.placeholder"
       />
     </nz-input-group>
     <ng-template #suffixTemplate>

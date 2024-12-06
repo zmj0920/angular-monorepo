@@ -258,7 +258,8 @@ export class CustomFormComponent {
       defaultValue: true,
       props: {
         label: 'switch',
-        required: true
+        required: true,
+        nzCheckedChildren:'switch'
       },
       expressionProperties: {
         'props.disabled': '!model.input' //动态禁用

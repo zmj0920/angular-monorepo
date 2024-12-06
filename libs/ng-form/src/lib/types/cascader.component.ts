@@ -10,7 +10,7 @@ interface CascaderProps extends FormlyFieldProps {
   nzAllowClear?: boolean;
   nzAutoFocus?: boolean;
   nzBackdrop?: boolean;
-  nzChangeOn?: (option: any, index: number) => boolean;
+  nzChangeOn?: (option: NzSafeAny, index: number) => boolean;
   nzChangeOnSelect?: boolean;
   nzColumnClassName?: string;
   nzDisabled?: boolean;
@@ -18,7 +18,7 @@ interface CascaderProps extends FormlyFieldProps {
   nzExpandTrigger?: 'click' | 'hover';
   nzLabelProperty?: string;
   nzLabelRenderName?: string;
-  nzLoadData?: (option: any, index?: number) => PromiseLike<any>;
+  nzLoadData?: (option: NzSafeAny, index?: number) => PromiseLike<NzSafeAny>;
   nzMenuClassName?: string;
   nzMenuStyle?: object;
   nzNotFoundContentName?: string;
